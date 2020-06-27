@@ -18,6 +18,7 @@ public class Main {
 		
 	eje.generarMatrix();
 	
+	//ejemplo de generacion 
 	for (int i=0;i<10;i++) {
 	int arre[]=eje.generarCoordenadas("h");	
 	eje.setTablero(arre[0],arre[1],'H');
