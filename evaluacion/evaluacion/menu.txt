@@ -20,4 +20,4 @@ MENU JUEGO
 										// Resumen de disparos / aciertos 
 										// Contar puntaje total
 										// Salir
-			
+					

@@ -32,8 +32,15 @@ public class Ejecutor implements Tablero {
 
 	@Override
 	public boolean lanzarHuevo(int x, int y) {
-		// TODO Auto-generated method stub
+			
+		
 		return false;
+	}
+	
+	@Override
+	public int calcularPuntaje() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
@@ -58,12 +65,7 @@ public class Ejecutor implements Tablero {
 		return null;
 	}
 
-	@Override
-	public int calcularPuntaje() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 	@Override
 	public int[] generarCoordenadas(String tipo) {
 		int fmax = 16, cmax = 15, ele = 3;
