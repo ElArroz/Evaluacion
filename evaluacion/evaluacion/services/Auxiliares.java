@@ -9,6 +9,6 @@ public class Auxiliares {
 		// llenar los arreglos
 		
 		return null;
-		}
+	}
 	
 }

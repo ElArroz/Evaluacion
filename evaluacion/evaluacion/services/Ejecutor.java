@@ -31,9 +31,9 @@ public class Ejecutor implements Tablero {
 	}
 
 	@Override
-	public int lanzarHuevo() {
+	public boolean lanzarHuevo(int x, int y) {
 		// TODO Auto-generated method stub
-		return 0;
+		return false;
 	}
 
 	@Override
@@ -87,14 +87,18 @@ public class Ejecutor implements Tablero {
 		for (int i = 1; i < tam + 1; i++)
 			for (int j = 0; j < tam; j++)
 				this.tablero[i][j] = tapa;
-		// El tablero es i,j
-		// El tablero empieza en 1,0 i=1 hasta i=14
-		// El tablero termina en 15,14 j=0 hasta j=14
+		
 		return null;
 	}
 
-	public void setTablero(int x, int y, char l) {
-		this.tablero[x][y] = l;
+	public void setTablero(int x, int y, char letra) {
+		this.tablero[x][y] = letra;
+	}
+
+	@Override
+	public String verificarCoordenadas(String tiro) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

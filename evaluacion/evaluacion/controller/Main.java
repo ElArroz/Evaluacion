@@ -1,8 +1,15 @@
 package controller;
+/*
+Las coordenadas se expresan como (x,y)
+	X es una fila y se denota por una letra (A->O) 
+	Y es una columna y se denota por un numero(1->15)
+
+un ejemplo seria F10, A7, N14, M4
+
+*/
 
 import java.util.Scanner;
 
-import services.Auxiliares;
 import services.Ejecutor;
 
 public class Main {
@@ -18,13 +25,17 @@ public class Main {
 		
 	eje.generarMatrix();
 	
-	//ejemplo de generacion 
+	//Ejemplo de Disparos de Huevos 
+	/*
 	for (int i=0;i<10;i++) {
 	int arre[]=eje.generarCoordenadas("h");	
 	eje.setTablero(arre[0],arre[1],'H');
 	}
-	
+	*/
+	eje.setTablero(1,5,'H');
 	eje.mostrarMatrix();
-	}
 	
+
+	}
+	 
 }
