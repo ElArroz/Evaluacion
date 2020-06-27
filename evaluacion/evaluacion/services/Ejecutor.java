@@ -3,14 +3,18 @@ package services;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import model.Caguano;
 import model.Carro;
 import model.Huevo;
+import model.Kromi;
 import model.Tablero;
+import model.Trupalla;
 
 public class Ejecutor implements Tablero {
 	int tam = 15; // tamaño tablero
 	char tapa = '·'; // caracter que tapa la celda //176
 	char tablero[][] = new char[tam + 1][tam];
+	int punto = 0;
 
 	@Override
 	public ArrayList<Carro> listarCarro() {
@@ -31,16 +35,30 @@ public class Ejecutor implements Tablero {
 	}
 
 	@Override
-	public boolean lanzarHuevo(int x, int y) {
-			
-		
-		return false;
+	public boolean lanzarHuevo(int x, int y) { //con respecto al impacto (si le pego)
+		if (tablero[x][y] == '.')
+			return false;
+		else
+			return true;
 	}
-	
+
 	@Override
-	public int calcularPuntaje() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int calcularPuntaje(int x, int y) {
+
+		switch (tablero[x][y]) {
+		case 'K':
+			punto += 3;
+			break;
+		case 'C':
+			punto += 2;
+			break;
+		case 'T':
+			punto += 1;
+			break;
+		default:
+			break;
+		}
+		return punto;
 	}
 
 	@Override
@@ -65,7 +83,6 @@ public class Ejecutor implements Tablero {
 		return null;
 	}
 
-	
 	@Override
 	public int[] generarCoordenadas(String tipo) {
 		int fmax = 16, cmax = 15, ele = 3;
@@ -89,7 +106,7 @@ public class Ejecutor implements Tablero {
 		for (int i = 1; i < tam + 1; i++)
 			for (int j = 0; j < tam; j++)
 				this.tablero[i][j] = tapa;
-		
+
 		return null;
 	}
 
@@ -117,6 +134,24 @@ public class Ejecutor implements Tablero {
 
 	@Override
 	public String desplegarTrupalla() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Caguano> listarCaguano() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Kromi> listarKromi() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Trupalla> listarTrupalla() {
 		// TODO Auto-generated method stub
 		return null;
 	}

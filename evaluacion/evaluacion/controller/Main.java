@@ -31,10 +31,11 @@ public class Main {
 	eje.setTablero(arre[0],arre[1],'H');
 	}
 */	
-	//eje.setTablero(1,5,'X'); //f1
-	//eje.setTablero(2.setTabler,5,'K'); //f1
-	//ejeo(3,5,'K'); //f1
+	eje.setTablero(1,5,'k'); //f1
+	eje.setTablero(2,5,'K'); //f1
+	eje.setTablero(3,5,'K'); //f1
 
+	//eje.setTablero
 		
 
 /* codigo para desplegar Victor!	
