@@ -1,4 +1,4 @@
-MENU JUEGO
+MENU JUEGO  // titulo
 
 1.- Crear juego 	// Desplegar vehiculos en la matrix
 			// 3 Kromis(K) - 5 Cahuanos(C) - 10 Trupallas(T)
