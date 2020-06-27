@@ -10,6 +10,11 @@ public interface Tablero {
 	public ArrayList<Huevo> listarHuevo();	
 	
 	public String crearCarro(); 					//revisar
+	
+	public String desplegarKromi(); 					//Nuevo revisar Victor
+	public String desplegarCaguano(); 					//Nuevo revisar Victor
+	public String desplegarTrupalla(); 					//Nuevo revisar Victor
+	
 	public boolean lanzarHuevo(int x, int y); 		//se cambia a boolean para verificar impacto
 	public String mostrarMatrix();
 	public String generarMatrix(); 					//Nuevo genera el tablero "vacio"
@@ -17,4 +22,5 @@ public interface Tablero {
 	public int[] generarCoordenadas(String tipo);  	//Genera las coordenadas y usa parentesis porque es un método (averiguar) //carlos
 	public String verificarCoordenadas(String tiro);//Revisa que las coordenadas esten bien y las pasa a numero
 }
+
 

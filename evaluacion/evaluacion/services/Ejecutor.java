@@ -9,7 +9,7 @@ import model.Tablero;
 
 public class Ejecutor implements Tablero {
 	int tam = 15; // tamaño tablero
-	char tapa = '·'; // caracter que tapa la celda
+	char tapa = '·'; // caracter que tapa la celda //176
 	char tablero[][] = new char[tam + 1][tam];
 
 	@Override
@@ -97,6 +97,24 @@ public class Ejecutor implements Tablero {
 
 	@Override
 	public String verificarCoordenadas(String tiro) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String desplegarKromi() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String desplegarCaguano() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String desplegarTrupalla() {
 		// TODO Auto-generated method stub
 		return null;
 	}

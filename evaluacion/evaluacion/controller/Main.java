@@ -18,22 +18,52 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-	//	Auxiliares ini = new Auxiliares();
-		Ejecutor eje = new Ejecutor();
+	Ejecutor eje = new Ejecutor();
 		
 		System.out.println("\t \t \t    CAMPO DE BATALLA");
 		
 	eje.generarMatrix();
 	
 	//Ejemplo de Disparos de Huevos 
-	/*
-	for (int i=0;i<10;i++) {
+/*
+	for (int i=0;i<5;i++) {
 	int arre[]=eje.generarCoordenadas("h");	
 	eje.setTablero(arre[0],arre[1],'H');
 	}
-	*/
-	eje.setTablero(1,5,'H');
+*/	
+	//eje.setTablero(1,5,'X'); //f1
+	//eje.setTablero(2.setTabler,5,'K'); //f1
+	//ejeo(3,5,'K'); //f1
+
+		
+
+/* codigo para desplegar Victor!	
+	
+int arre[]=eje.generarCoordenadas("K");	
+	
+  if Tablero[arre[0]],[arre[1]=='·' { //K
+		  if Tablero[arre[0]+1],[arre[1]=='·'{
+				  if Tablero[arre[0]+2],[arre[1]=='·'{
+						  eje.setTablero(arre[0],arre[1],'X');
+						  eje.setTablero(arre[0]+1,arre[1],'X');
+						  eje.setTablero(arre[0]+2,arre[1],'X')
+				  }
+		  
+  } 
+  }	
+*/	
+	
+	
+	
+	
+	//eje.setTablero(arre[0],arre[1],'X');
+	
+	
+	
+	
 	eje.mostrarMatrix();
+	
+
 	
 
 	}
