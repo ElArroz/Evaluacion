@@ -21,4 +21,5 @@ MENU JUEGO  // titulo holi
 			// Contar puntaje total
 			// Salir
 			//Prueba
+			//Prueba Diego
 			
