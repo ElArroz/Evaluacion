@@ -1,4 +1,4 @@
-MENU JUEGO  // Holanda que talca
+MENU JUEGO  // Carlos
 
 1.- Crear juego 	// Desplegar vehiculos en la matrix
 			// 3 Kromis(K) - 5 Cahuanos(C) - 10 Trupallas(T)
