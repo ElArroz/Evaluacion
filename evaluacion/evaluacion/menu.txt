@@ -1,0 +1,23 @@
+MENU JUEGO
+
+1.- Crear juego 	// Desplegar vehiculos en la matrix
+			// 3 Kromis(K) - 5 Cahuanos(C) - 10 Trupallas(T)
+			// Confirmar el despliegue y pasa a item 2
+
+2.- Iniciar (continuar batalla)     // Lucha por oscurilandia
+
+	2.1.-Disparo automatico (azar)
+	2.2.-Disparo manual (indicar coordenadas de disparo)
+			// Logica de disparo 
+			// Verificacion de impacto (marcaje con H)
+			// Asignacion de puntaje (siempre y cuando sea un impacto nuevo)
+			// Indicar si fallaste o atinaste
+			// Contador de disparos - impactos
+	2.3.-Volver (menu principal) 
+
+3.- Finalizar Juego  
+			// Mostar matrix completa
+			// Resumen de disparos / aciertos 
+			// Contar puntaje total
+			// Salir
+			
