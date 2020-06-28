@@ -36,12 +36,7 @@ public class Pantalla extends JFrame {
 	private JPanel ventana;
 	private JTable tableroJuego;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
-		
-		
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -139,7 +134,6 @@ public class Pantalla extends JFrame {
 		
 		
 		eje.generarMatrix();
-		
 		eje.setTablero(1,5,'C'); 
 		eje.setTablero(2,5,'T'); 
 		eje.setTablero(3,5,'K'); 
@@ -173,7 +167,7 @@ public class Pantalla extends JFrame {
 		
 		for (int i = 0; i < 16; i++) {
 			tableroJuego.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-			tableroJuego.getColumnModel().getColumn(i).setResizable(false);
+			//tableroJuego.getColumnModel().getColumn(i).setResizable(false);
 		
 		}
 	//	tableroJuego.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
