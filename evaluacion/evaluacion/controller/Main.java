@@ -16,14 +16,12 @@ import services.Ejecutor;
 
 public class Main {
 	
-	
-
 	private static Scanner teclado = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		JFrame frame = null;
 		
-	Ejecutor eje = new Ejecutor();
+		JFrame frame = null;
+		Ejecutor eje = new Ejecutor();
 		
 		System.out.println("\t \t \t    CAMPO DE BATALLA");
 		
@@ -60,21 +58,12 @@ int arre[]=eje.generarCoordenadas("K");
 		  
   } 
   }	
-*/	
+*/		
 	
-	
-	
-	
-	//eje.setTablero(arre[0],arre[1],'X');
-	
-	
-	
+//eje.setTablero(arre[0],arre[1],'X');
 	
 //	eje.mostrarMatrix();
 	
-
-	
-
 	}
 	 
 }
