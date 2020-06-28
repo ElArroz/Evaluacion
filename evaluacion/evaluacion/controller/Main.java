@@ -9,7 +9,6 @@ un ejemplo seria F10, A7, N14, M4
 */
 
 import java.util.Scanner;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import services.Ejecutor;
@@ -20,7 +19,6 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		JFrame frame = null;
 		Ejecutor eje = new Ejecutor();
 		
 		System.out.println("\t \t \t    CAMPO DE BATALLA");
@@ -39,8 +37,17 @@ public class Main {
 	eje.setTablero(2,5,'T'); //f1
 	eje.setTablero(3,5,'K'); //f1
 	
-	JOptionPane.showMessageDialog (null,eje.getMatrix(),"ZONA DE BATALLA",JOptionPane.PLAIN_MESSAGE);//,JOptionPane.WARNING_MESSAGE
 
+	
+	JOptionPane.showMessageDialog (null,eje.getMatrix()," [ ZONA DE BATALLA ]",JOptionPane.INFORMATION_MESSAGE );//,JOptionPane.WARNING_MESSAGE ,JOptionPane.PLAIN_MESSAGE
+
+	
+	
+	
+	
+	
+	
+	
 	//eje.setTablero
 		
 
