@@ -20,6 +20,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Ejecutor eje = new Ejecutor();
+		char tableroJuego[][] = eje.getTablero();
 		
 		System.out.println("\t \t \t    CAMPO DE BATALLA");
 		
@@ -39,13 +40,10 @@ public class Main {
 	
 
 	
-	JOptionPane.showMessageDialog (null,eje.getMatrix()," [ ZONA DE BATALLA ]",JOptionPane.INFORMATION_MESSAGE );//,JOptionPane.WARNING_MESSAGE ,JOptionPane.PLAIN_MESSAGE
+	JOptionPane.showMessageDialog (null, tableroJuego[1][5]," [ ZONA DE BATALLA ]",JOptionPane.INFORMATION_MESSAGE );//,JOptionPane.WARNING_MESSAGE ,JOptionPane.PLAIN_MESSAGE
 
 	
-	
-	
-	
-	
+
 	
 	
 	//eje.setTablero
