@@ -184,3 +184,4 @@ public class Pantalla extends JFrame {
 	}
 	
 }
+
