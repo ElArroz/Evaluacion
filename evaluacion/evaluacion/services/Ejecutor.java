@@ -167,5 +167,8 @@ public class Ejecutor implements Tablero {
 		mostrarMatrix();
 		return this.mensaje;
 	}
-
+	
+	public char[][] getTablero() {
+		return tablero;
+	}
 }
