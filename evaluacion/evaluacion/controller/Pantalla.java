@@ -167,11 +167,9 @@ public class Pantalla extends JFrame {
 		
 		for (int i = 0; i < 16; i++) {
 			tableroJuego.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-			//tableroJuego.getColumnModel().getColumn(i).setResizable(false);
+			tableroJuego.getColumnModel().getColumn(i).setResizable(false);
 		
 		}
-	//	tableroJuego.getColumnModel().getColumn(0).setCellRenderer(centerRenderer);
-	//	tableroJuego.getColumnModel().getColumn(0).setResizable(false);
 		
 		scrollPane.setViewportView(tableroJuego);
 		ventana.setLayout(gl_ventana);
