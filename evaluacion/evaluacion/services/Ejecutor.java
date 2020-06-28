@@ -15,6 +15,7 @@ public class Ejecutor implements Tablero {
 	char tapa = '·'; // caracter que tapa la celda //176
 	char tablero[][] = new char[tam + 1][tam];
 	int punto = 0;
+	String mensaje ="         ";
 
 	@Override
 	public ArrayList<Carro> listarCarro() {
@@ -63,19 +64,24 @@ public class Ejecutor implements Tablero {
 
 	@Override
 	public String mostrarMatrix() {
+		String txt="  "; 
 		System.out.print(" \t"); // dejar un espacio en blanco
 
 		for (int i = 0; i < tam; i++) {
 			System.out.print((char) (i + 65) + "   "); // Llenamos la primera fila con letras 65 es "A"
+			this.mensaje=this.mensaje+(char) (i + 65) + "   ";
 		}
 		System.out.println();
 		for (int i = 0; i < tam + 1; i++) {
 			if (i != 0) {
 				System.out.printf("%2d\t", i);
+				if (i>9) txt="";
+				this.mensaje=this.mensaje+"\n "+txt+i;
 			}
 
 			for (int j = 0; j < tam; j++) {
 				System.out.print(this.tablero[i][j] + "   ");
+				this.mensaje=this.mensaje+"    "+(this.tablero[i][j]);
 			}
 			System.out.println();
 
@@ -154,6 +160,12 @@ public class Ejecutor implements Tablero {
 	public ArrayList<Trupalla> listarTrupalla() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getMatrix() {
+		mostrarMatrix();
+		return this.mensaje;
 	}
 
 }

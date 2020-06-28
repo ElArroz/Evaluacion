@@ -9,19 +9,25 @@ un ejemplo seria F10, A7, N14, M4
 */
 
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import services.Ejecutor;
 
 public class Main {
+	
+	
 
 	private static Scanner teclado = new Scanner(System.in);
 	
 	public static void main(String[] args) {
+		JFrame frame = null;
 		
 	Ejecutor eje = new Ejecutor();
 		
 		System.out.println("\t \t \t    CAMPO DE BATALLA");
 		
+	
 	eje.generarMatrix();
 	
 	//Ejemplo de Disparos de Huevos 
@@ -31,9 +37,11 @@ public class Main {
 	eje.setTablero(arre[0],arre[1],'H');
 	}
 */	
-	eje.setTablero(1,5,'k'); //f1
-	eje.setTablero(2,5,'K'); //f1
+	eje.setTablero(1,5,'C'); //f1
+	eje.setTablero(2,5,'T'); //f1
 	eje.setTablero(3,5,'K'); //f1
+	
+	JOptionPane.showMessageDialog (null,eje.getMatrix(),"ZONA DE BATALLA",JOptionPane.PLAIN_MESSAGE);//,JOptionPane.WARNING_MESSAGE
 
 	//eje.setTablero
 		
@@ -62,7 +70,7 @@ int arre[]=eje.generarCoordenadas("K");
 	
 	
 	
-	eje.mostrarMatrix();
+//	eje.mostrarMatrix();
 	
 
 	
