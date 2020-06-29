@@ -13,7 +13,7 @@ import model.Trupalla;
 public class Ejecutor implements Tablero {
 	int tam = 15; // tamaño tablero
 	char tapa = '·'; // caracter que tapa la celda //176
-	char tablero[][] = new char[tam + 1][tam];
+	char tablero[][] = new char[tam + 1][tam+1];
 	int punto = 0;
 	String mensaje ="         ";
 
@@ -109,8 +109,8 @@ public class Ejecutor implements Tablero {
 	@Override
 	public String generarMatrix() {
 
-		for (int i = 1; i < tam + 1; i++)
-			for (int j = 0; j < tam; j++)
+		for (int i = 0; i < tam + 1; i++)
+			for (int j = 0; j < tam + 1; j++)
 				this.tablero[i][j] = tapa;
 
 		return null;
