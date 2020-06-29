@@ -1,74 +1,100 @@
 package controller;
-/*
-Las coordenadas se expresan como (x,y)
-	X es una fila y se denota por una letra (A->O) 
-	Y es una columna y se denota por un numero(1->15)
 
-un ejemplo seria F10, A7, N14, M4
-
-*/
-
-import java.util.Scanner;
+import java.awt.Color;
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
-import services.Ejecutor;
+public class Main extends JFrame {
 
-public class Main {
-	
-	private static Scanner teclado = new Scanner(System.in);
-	
+	private JPanel inicio;
+
 	public static void main(String[] args) {
-		
-		Ejecutor eje = new Ejecutor();
-		char tableroJuego[][] = eje.getTablero();
-		
-		System.out.println("\t \t \t    CAMPO DE BATALLA");
-		
-	
-	eje.generarMatrix();
-	
-	//Ejemplo de Disparos de Huevos 
-/*
-	for (int i=0;i<5;i++) {
-	int arre[]=eje.generarCoordenadas("h");	
-	eje.setTablero(arre[0],arre[1],'H');
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Main frame = new Main();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
-*/	
-	eje.setTablero(1,5,'C'); //f1
-	eje.setTablero(2,5,'T'); //f1
-	eje.setTablero(3,5,'K'); //f1
-	
 
-	
-	JOptionPane.showMessageDialog (null, tableroJuego[1][5]," [ ZONA DE BATALLA ]",JOptionPane.INFORMATION_MESSAGE );//,JOptionPane.WARNING_MESSAGE ,JOptionPane.PLAIN_MESSAGE
-
-	
 
 	
 	
-	//eje.setTablero
+	public Main() {
+		setTitle("[ Batalla por Oscurilandia ]");
+		setAlwaysOnTop(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setSize(560, 450);
+		setResizable(false);
+		setLocationRelativeTo(null);
+		inicio = new JPanel();
+		inicio.setBackground(Color.DARK_GRAY);
+		inicio.setBorder(new EmptyBorder(4, 4, 4, 4));
+		setContentPane(inicio);
+	
 		
+		
+		
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Main.class.getResource("/img/fondoHuevos.png")));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JButton btnIniciarJuego = new JButton("INICIAR");
+		btnIniciarJuego.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+			
+				Pantalla m = new Pantalla();
+				m.setVisible(true);
+				m.setSize(560,450);
+				setLocationRelativeTo(null);
+				
+				inicio.setVisible(false);
+				dispose();
+			}
+		});
+		btnIniciarJuego.setFont(new Font("Stencil", Font.BOLD, 20));
 
-/* codigo para desplegar Victor!	
-	
-int arre[]=eje.generarCoordenadas("K");	
-	
-  if Tablero[arre[0]],[arre[1]=='·' { //K
-		  if Tablero[arre[0]+1],[arre[1]=='·'{
-				  if Tablero[arre[0]+2],[arre[1]=='·'{
-						  eje.setTablero(arre[0],arre[1],'X');
-						  eje.setTablero(arre[0]+1,arre[1],'X');
-						  eje.setTablero(arre[0]+2,arre[1],'X')
-				  }
-		  
-  } 
-  }	
-*/		
-	
-//eje.setTablero(arre[0],arre[1],'X');
-	
-//	eje.mostrarMatrix();
-	
+		
+		
+		GroupLayout gl_inicio = new GroupLayout(inicio);
+		gl_inicio.setHorizontalGroup(
+			gl_inicio.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_inicio.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_inicio.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnIniciarJuego, GroupLayout.PREFERRED_SIZE, 515, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 515, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(21, Short.MAX_VALUE))
+		);
+		gl_inicio.setVerticalGroup(
+			gl_inicio.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_inicio.createSequentialGroup()
+					.addGap(5)
+					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 292, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnIniciarJuego, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		inicio.setLayout(gl_inicio);
 	}
-	 
 }
