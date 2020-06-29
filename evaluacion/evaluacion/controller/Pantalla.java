@@ -32,6 +32,7 @@ import javax.swing.Action;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
+import javax.swing.JTree;
 
 public class Pantalla extends JFrame {
 
@@ -53,11 +54,7 @@ public class Pantalla extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					eje.generarMatrix();
-					eje.setTablero(0, 5, 'K');
-					eje.setTablero(1, 5, 'K');
-					eje.setTablero(2, 5, 'K');
-
+					
 					Pantalla frame = new Pantalla();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -89,7 +86,7 @@ public class Pantalla extends JFrame {
 		setTitle("[ Batalla por Oscurilandia: A la conquista de la camara secreta ]");
 		//setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(560, 450);
+		setSize(556, 449);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		ventana = new JPanel();
@@ -98,23 +95,12 @@ public class Pantalla extends JFrame {
 		setContentPane(ventana);
 
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(20, 17, 516, 265);
 		scrollPane.setEnabled(false);
 
 		panel = new JPanel();
+		panel.setBounds(20, 295, 516, 106);
 		panel.setBackground(Color.GRAY);
-
-		GroupLayout gl_ventana = new GroupLayout(ventana);
-		gl_ventana.setHorizontalGroup(gl_ventana.createParallelGroup(Alignment.LEADING).addGroup(gl_ventana
-				.createSequentialGroup().addGap(16)
-				.addGroup(gl_ventana.createParallelGroup(Alignment.LEADING)
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 516, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE))
-				.addContainerGap()));
-		gl_ventana.setVerticalGroup(gl_ventana.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ventana.createSequentialGroup().addContainerGap()
-						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 265, GroupLayout.PREFERRED_SIZE)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE).addGap(10)));
 		
 		
 		
@@ -123,6 +109,13 @@ public class Pantalla extends JFrame {
 		btnDesplegar = new JButton("Desplegar Carros");
 		btnDesplegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				tableroJuego.setVisible(true);
+				eje.generarMatrix();
+				eje.setTablero(0, 5, 'K');
+				eje.setTablero(1, 5, 'K');
+				eje.setTablero(2, 5, 'K');
+
+				
 				mostrarMatriz();
 			}
 		});
@@ -135,6 +128,7 @@ public class Pantalla extends JFrame {
 			}
 		});
 		panel.add(btnDisparoManual);
+		btnDisparoManual.setVisible(false);
 				
 
 		btnFinPartida = new JButton("Finalizar partida");
@@ -143,9 +137,25 @@ public class Pantalla extends JFrame {
 			}
 		});
 		panel.add(btnFinPartida);
+		btnFinPartida.setVisible(false);
 		
 		btnJugar = new JButton("JUGAR");
 		btnJugar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnJugar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+				btnDisparoAzar.setVisible(true);
+				btnDisparoManual.setVisible(true);
+				btnFinPartida.setVisible(true);
+				
+				btnDesplegar.setVisible(false);
+				btnJugar.setVisible(false);
+				
+			
+			}
+		});
+		
+		
 		panel.add(btnJugar);
 		
 		btnDisparoAzar = new JButton("Disparo Azar");
@@ -154,6 +164,7 @@ public class Pantalla extends JFrame {
 			}
 		});
 		panel.add(btnDisparoAzar);
+		btnDisparoAzar.setVisible(false);
 		
 		btnSalir = new JButton("SALIR");
 		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -192,7 +203,8 @@ public class Pantalla extends JFrame {
 
 		tableroJuego = new JTable();
 		tableroJuego.setRowSelectionAllowed(false);
-		tableroJuego.setForeground(Color.BLACK);
+		//tableroJuego.setForeground(Color.BLACK);
+		tableroJuego.setVisible(false);
 		tableroJuego.setBorder(null);
 		tableroJuego.getTableHeader().setReorderingAllowed(false);
 		tableroJuego.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -226,6 +238,8 @@ public class Pantalla extends JFrame {
 		}
 
 		scrollPane.setViewportView(tableroJuego);
-		ventana.setLayout(gl_ventana);
+		ventana.setLayout(null);
+		ventana.add(scrollPane);
+		ventana.add(panel);
 	}
 }
