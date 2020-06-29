@@ -35,12 +35,20 @@ public class Pantalla extends JFrame {
 
 	private JPanel ventana;
 	private JTable tableroJuego;
-
+	int tam=15;
+	static Ejecutor eje = new Ejecutor();
+	char matrixJuego[][] = eje.getTablero();
+	
 	public static void main(String[] args) {
-		
+	
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					eje.generarMatrix();
+					eje.setTablero(0,5,'K'); 
+					eje.setTablero(1,5,'K'); 
+					eje.setTablero(2,5,'K');
+					
 					Pantalla frame = new Pantalla();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -50,43 +58,25 @@ public class Pantalla extends JFrame {
 		});
 			
 	}
-
 	
-	
-	public void mostrarMatriz() { //char matrix[][]
-		//Ejecutor eje = new Ejecutor();
-		//char matrixJuego[][] = eje.getTablero();
-		int tam=15;
+	public void mostrarMatriz() { 
 		
 		DefaultTableModel model = (DefaultTableModel) tableroJuego.getModel();
 		model.setRowCount(tam);
-				
-		for (int i = 1; i < tam+1; i++) {
-			tableroJuego.setValueAt(i,i-1,0); //Encabezados filas 1 a 15
-			
-		}
-		/*
-		System.out.println();
-		for (int i = 0; i < tam + 1; i++) {
-			if (i != 0) {
-				System.out.printf("%2d\t", i);
+	
+		for (int i = 0; i < tam; i++) {
+			tableroJuego.setValueAt(i+1,i,0); //Encabezados filas 1 a 15
+			}
+		
+		for (int i = 0; i < tam; i++) {
+			 for (int j = 1; j < tam+1; j++) {
+				 tableroJuego.setValueAt(matrixJuego[i][j],i,j);
 				}
-			for (int j = 0; j < tam; j++) {
-				System.out.print(this.tablero[i][j] + "   ");
-				}
-			System.out.println();
 		}
-		*/
 	}
 	
-	
-	
-	/**
-	 * Create the frame.
-	 */
 	public Pantalla() {
-		Ejecutor eje = new Ejecutor();
-		
+				
 		setTitle("[ Batalla por Oscurilandia: A la conquista de la camara secreta ]");
 		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -133,11 +123,6 @@ public class Pantalla extends JFrame {
 		);
 		
 		
-		eje.generarMatrix();
-		eje.setTablero(1,5,'C'); 
-		eje.setTablero(2,5,'T'); 
-		eje.setTablero(3,5,'K'); 
-		
 		
 		tableroJuego = new JTable();
 		tableroJuego.setRowSelectionAllowed(false);
@@ -162,6 +147,13 @@ public class Pantalla extends JFrame {
 		});
 		
 		
+		DefaultTableModel model = (DefaultTableModel) tableroJuego.getModel();
+		model.setRowCount(tam);
+		
+		for (int i = 0; i < tam; i++) {
+			tableroJuego.setValueAt(i+1,i,0); //Encabezados filas 1 a 15
+			}
+		
 		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
 		centerRenderer.setHorizontalAlignment( JLabel.CENTER );
 		
@@ -176,4 +168,3 @@ public class Pantalla extends JFrame {
 	}
 	
 }
-
