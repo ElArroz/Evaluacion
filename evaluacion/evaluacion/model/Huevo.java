@@ -7,7 +7,7 @@ public class Huevo {
 	int fila;
 	int columna;
 	int puntaje;
-	ArrayList<String> realizarDisparos = new ArrayList<>();
+	//ArrayList<String> realizarDisparos = new ArrayList<>();
 
 	public Huevo() {
 	}
@@ -18,7 +18,7 @@ public class Huevo {
 		this.puntaje = puntaje;
 	}
 
-	public void realizarDisparo(String realizarDisparo) {
+	/*public void realizarDisparo(String realizarDisparo) {
 
 		realizarDisparos.add(realizarDisparo);
 
@@ -33,7 +33,7 @@ public class Huevo {
 				System.out.println(realizarDisparos.get(j));
 			}
 
-	}
+	}*/
 
 	public int getFila() {
 		return fila;

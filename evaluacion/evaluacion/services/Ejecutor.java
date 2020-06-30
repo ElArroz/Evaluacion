@@ -86,8 +86,12 @@ public class Ejecutor implements Tablero {
 		case 'T':
 			punto += 1;
 			break;
-		default:
-			break;
+		}
+		if(lanzarHuevo(x,y) == true){  //nose si estara bien asi 
+			punto = 'k' + 10;
+		}else if(lanzarHuevo(x,y) == false)
+		{
+			punto = 'C' + 7;
 		}
 		return punto;
 	}
