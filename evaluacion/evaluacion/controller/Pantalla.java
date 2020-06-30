@@ -113,6 +113,8 @@ public class Pantalla extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
 				eje.generarMatrix();
+				//eje.crearCarro(null);
+				//eje.listarCarro();
 				eje.setTablero(0, 5, 'K');
 				eje.setTablero(1, 5, 'K');
 				eje.setTablero(2, 5, 'K');

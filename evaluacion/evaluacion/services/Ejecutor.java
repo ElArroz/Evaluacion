@@ -19,50 +19,44 @@ public class Ejecutor implements Tablero {
 	char matrixJuego[][] = new char[tam + 1][tam + 1];
 	int punto = 0;
 	String mensaje = "         ";
-	
-	//ArrayList Carro listarCarro = new Arraylist[];
-	
-	ArrayList<String> crearCarros = new ArrayList<String>();
+
+	// ArrayList Carro listarCarro = new Arraylist[];
 
 	@Override
-	public ArrayList<Carro> listarCarro(Carro crearCarro) {
-		
-		//Carro listarCarro[x][y] = new Carro[x][y];
-		
-		/*for(int i = 0; i< crearCarros; i++)
-			
-		if(tablero[i][j] instanceof Kromi)
-		{
-			
-		}
-		if(tablero[i][j] instanceof Caguano)
-		{
-			
-		}
-		if(tablero[i][j] instanceof Trupalla)
-		{
-			
-		}*/
-		
+	public ArrayList<Carro> listarCarro() {
+
+		// Carro listarCarro[x][y] = new Carro[x][y];
+
+		/*
+		 * for(int i = 0; i< crearCarros; i++)
+		 * 
+		 * if(tablero[i][j] instanceof Kromi) {
+		 * 
+		 * } if(tablero[i][j] instanceof Caguano) {
+		 * 
+		 * } if(tablero[i][j] instanceof Trupalla) {
+		 * 
+		 * }
+		 */
+
 		return null;
-		
+
 	}
 
 	@Override
-	public ArrayList<Huevo> listarHuevo(Huevo huevos) {
-		// Huevo.add(huevos);
-		return null;
+	public ArrayList<Huevo> listarHuevo() {
+		ArrayList<Huevo> huevo = new ArrayList<>();
+		huevo.addAll(huevo);
+		return huevo;
 
 	}
 
 	@Override
 	public String crearCarro(String crearCarro) {
-		
+		ArrayList<String> crearCarros = new ArrayList<String>();
 		crearCarros.addAll(crearCarros);
-		
 		return crearCarro;
 
-		
 	}
 
 	@Override
@@ -87,17 +81,16 @@ public class Ejecutor implements Tablero {
 			punto += 1;
 			break;
 		}
-		if(lanzarHuevo(x,y) == true){  //nose si estara bien asi 
+		if (lanzarHuevo(x, y) == true) { // nose si estara bien asi
 			punto = 'k' + 10;
-		}else if(lanzarHuevo(x,y) == true)
-		{
+		} else if (lanzarHuevo(x, y) == true) {
 			punto = 'C' + 7;
 		}
 		return punto;
 	}
 
 	@Override
-	public void mostrarMatrix() { //TODO Averiguar como usar este metodo desde Ejecutor
+	public void mostrarMatrix() { // TODO Averiguar como usar este metodo desde Ejecutor
 
 		DefaultTableModel model = (DefaultTableModel) Pantalla.tableroJuego.getModel();
 		model.setRowCount(tam);
@@ -108,44 +101,34 @@ public class Ejecutor implements Tablero {
 
 		for (int i = 0; i < tam; i++) {
 			for (int j = 1; j < tam + 1; j++) {
-				
+
 				Pantalla.tableroJuego.setValueAt(matrixJuego[i][j], i, j);
 			}
 		}
 	}
-/*	public String mostrarMatrix() {
-		
-		
-		
-		/*
-		  String txt = "  ";
-		 
-		System.out.print(" \t"); // dejar un espacio en blanco
 
-		for (int i = 0; i < tam; i++) {
-			System.out.print((char) (i + 65) + "   "); // Llenamos la primera fila con letras 65 es "A"
-			this.mensaje = this.mensaje + (char) (i + 65) + "   ";
-		}
-		System.out.println();
-		for (int i = 0; i < tam + 1; i++) {
-			if (i != 0) {
-				System.out.printf("%2d\t", i);
-				if (i > 9)
-					txt = "";
-				this.mensaje = this.mensaje + "\n " + txt + i;
-			}
-
-			for (int j = 0; j < tam; j++) {
-				System.out.print(this.tablero[i][j] + "   ");
-				this.mensaje = this.mensaje + "    " + (this.tablero[i][j]);
-			}
-			System.out.println();
-
-		}
-		return null;
-	}
-
-*/
+	/*
+	 * public String mostrarMatrix() {
+	 * 
+	 * 
+	 * 
+	 * /* String txt = "  ";
+	 * 
+	 * System.out.print(" \t"); // dejar un espacio en blanco
+	 * 
+	 * for (int i = 0; i < tam; i++) { System.out.print((char) (i + 65) + "   "); //
+	 * Llenamos la primera fila con letras 65 es "A" this.mensaje = this.mensaje +
+	 * (char) (i + 65) + "   "; } System.out.println(); for (int i = 0; i < tam + 1;
+	 * i++) { if (i != 0) { System.out.printf("%2d\t", i); if (i > 9) txt = "";
+	 * this.mensaje = this.mensaje + "\n " + txt + i; }
+	 * 
+	 * for (int j = 0; j < tam; j++) { System.out.print(this.tablero[i][j] + "   ");
+	 * this.mensaje = this.mensaje + "    " + (this.tablero[i][j]); }
+	 * System.out.println();
+	 * 
+	 * } return null; }
+	 * 
+	 */
 	@Override
 	public int[] generarCoordenadas(String tipo) {
 		int fmax = 15, cmax = 16, ele = 3;
@@ -158,9 +141,9 @@ public class Ejecutor implements Tablero {
 		}
 
 		int fila = ThreadLocalRandom.current().nextInt(0, fmax);
-		int columna = ThreadLocalRandom.current().nextInt(1, cmax); 
+		int columna = ThreadLocalRandom.current().nextInt(1, cmax);
 
-		return new int[] {fila, columna, ele };
+		return new int[] { fila, columna, ele };
 	}
 
 	@Override
@@ -221,7 +204,5 @@ public class Ejecutor implements Tablero {
 	public char[][] getTablero() {
 		return matrixJuego;
 	}
-
-
 
 }
