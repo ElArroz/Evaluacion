@@ -39,15 +39,17 @@ public class Pantalla extends JFrame {
 	private JPanel ventana;
 	public static JTable tableroJuego;
 	int tam = 15;
+	int puntos = 0;
 	static Ejecutor eje = new Ejecutor();
 	char matrixJuego[][] = eje.getTablero();
 	private JPanel panel;
 	private JButton btnDesplegar;
-	private JButton btnDisparoManual;
-	private JButton btnDisparoAzar;
+	private JButton btnMostrarTablero;
+	private JButton btnDisparar;
 	private JButton btnFinPartida;
 	private JButton btnSalir;
 	private JButton btnJugar;
+	//private JButton btnPuntos;
 
 	public static void main(String[] args) {
 
@@ -86,8 +88,7 @@ public class Pantalla extends JFrame {
 		setTitle("[ Batalla por Oscurilandia: A la conquista de la camara secreta ]");
 		//setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//setSize(556, 449);
+		setSize(556, 449);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		ventana = new JPanel();
@@ -102,6 +103,7 @@ public class Pantalla extends JFrame {
 		panel = new JPanel();
 		panel.setBounds(20, 295, 516, 106);
 		panel.setBackground(Color.GRAY);
+		
 		
 		
 		panel.setLayout(new GridLayout(0, 3, 0, 0));
@@ -121,14 +123,25 @@ public class Pantalla extends JFrame {
 		});
 		panel.add(btnDesplegar);
 		
-				
-		btnDisparoManual = new JButton("Disparo Manual");
-		btnDisparoManual.addActionListener(new ActionListener() {
+	/*	btnPuntos = new JButton("Puntos");
+		btnPuntos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				eje.calcularPuntaje(puntos, puntos);		
+				}
+		});
+		panel.add(btnPuntos);
+		btnPuntos.setVisible(false);	
+		*/
+		
+		btnMostrarTablero = new JButton("Mostrar Tablero");
+		btnMostrarTablero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		
+				mostrarMatriz();
 			}
 		});
-		panel.add(btnDisparoManual);
-		btnDisparoManual.setVisible(false);
+		panel.add(btnMostrarTablero);
+		btnMostrarTablero.setVisible(false);
 				
 
 		btnFinPartida = new JButton("Finalizar partida");
@@ -144,10 +157,9 @@ public class Pantalla extends JFrame {
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
-				btnDisparoAzar.setVisible(true);
-				btnDisparoManual.setVisible(true);
+				btnDisparar.setVisible(true);
+				btnMostrarTablero.setVisible(true);
 				btnFinPartida.setVisible(true);
-				
 				btnDesplegar.setVisible(false);
 				btnJugar.setVisible(false);
 				
@@ -158,13 +170,37 @@ public class Pantalla extends JFrame {
 		
 		panel.add(btnJugar);
 		
-		btnDisparoAzar = new JButton("Disparo Azar");
-		btnDisparoAzar.addActionListener(new ActionListener() {
+		btnDisparar = new JButton("DISPARAR");
+		btnDisparar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnDisparar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				int option = JOptionPane.showConfirmDialog(
+						null, 
+						"¿Disparo aleatorio?",
+						"LANZAR HUEVO", 
+						JOptionPane.YES_NO_OPTION, 
+						JOptionPane.QUESTION_MESSAGE);
+					if (option == JOptionPane.YES_OPTION) {
+						int cord[]= eje.generarCoordenadas("H");
+						eje.setTablero(cord[0], cord[1], 'H');
+						char col=(char) (64+cord[1]);
+						int x=cord[1];
+						int y=cord[0];
+						System.out.println("Cordenadas al azar "+ String.valueOf(col)+(y+1)+" ("+x+","+y+")");
+					}
+					else {
+						String cord = JOptionPane.showInputDialog("Ingresa coordenada (Ejemplo: A1)");
+						//enviar a verificar
+						System.out.println("Se ingresa coordenadas "+cord+" y se llama auxilia lanza huevo");
+
+					}
+					//llamar auxiliar;
+				
 			}
 		});
-		panel.add(btnDisparoAzar);
-		btnDisparoAzar.setVisible(false);
+		panel.add(btnDisparar);
+		btnDisparar.setVisible(false);
 		
 		btnSalir = new JButton("SALIR");
 		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 18));
