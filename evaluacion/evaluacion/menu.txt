@@ -1,23 +1,44 @@
-MENU JUEGO 
+MENU JUEGO  
 
-1.- Crear juego 						// Desplegar vehiculos en la matrix
-										// 3 Kromis(K) - 5 Cahuanos(C) - 10 Trupallas(T)
-										// Confirmar el despliegue y pasa a item 2
+Boton "Desplegar Carros"	:Debe generar los 18 carros llamando a crearCarros(), preguntar los datos para cada carro y llenar arreglo de objeto carro, mostrar el tablero (ocultando ubicacion), confirmar el despliegue.
+Boton "Iniciar Patida" 		:Oculta botones desplegar y jugar, Muestra contenido de listado de carros agrupados por tipo, puede preguntar nombre de usuario y pone contadores a cero;
+Botón "Disparar Huevo"		:pregunta cordenadas de tiro/azar, luego con las cordenadas verifica si hay impacto, llama a lanzarHuevo(), pregunta si desea otro tiro;
+Botón "Mostrar Tablero" 	:Actualiza tablero llamando a mostrarMatriz();
+Boton "Finalizar Partida"	:Pide confirmacion, muestra ubicacion de carros en tablero, impactos y estadisticas (cantidad de tiros, puntaje obtenido, etc), luego reinicia contadores (podria guradar datos en txt) y muestra el menu inicial
+Botón "Salir"				:Muestra estadisticas, pide confirmacion y luego cierra todo.
 
-2.- Iniciar (continuar batalla)     	// Lucha por oscurilandia
 
-	2.1.-Disparo automatico al azar
-	2.2.-Disparo manual (indicar coordenadas)
-										// Logica de disparo 
-										// Verificacion de impacto (marcaje con H)
-										// Asignacion de puntaje (siempre y cuando sea un impacto nuevo)
-										// Indicar si fallaste o atinaste
-										// Contador de disparos - impactos
-	2.3.-Volver (menu principal) 
+Metodos (funciones):
 
-3.- Finalizar Juego  
-										// Mostar matrix completa
-										// Resumen de disparos / aciertos 
-										// Contar puntaje total
-										// Salir
+crearCarro()  genera un objeto carro (segun la instancia correspondiente) y la suma a la lista. // Se genera una coordena al azar y luego se despliega el tipo de carro.
+lanzarHuevo() crea una instancia de huevo, con la coordenada, puntaje y la suma a la lista.	// Las instancias de huevos deben tener fila,colum y ptje, usar add.
+mostrarMatriz() muestra el estado de la matriz y muestra el puntaje obtenido
+calcularPuntaje() suma los puntajes y los devuelve //return.
+
+
+lista carro =18 instancias;
+lista huevo = ilimitado;
+
+           Ctd  Puntos al impactar
+
+K Kromi     3	+3  al "destruir" +10
+C Caguano   5	+2  al "destruir" +7
+T Trupalla  10	+1
+H Huevo
+
+
+
+// Desplegar vehiculos en la matrix
+// 3 Kromis(K) - 5 Cahuanos(C) - 10 Trupallas(T)
+// llenar listas
+// Mostrar detalles
+
+// Logica de disparo 
+// Verificacion de impacto (marcaje con H)
+// Asignacion de puntaje (siempre y cuando sea un impacto nuevo)
+// Indicar si fallaste o atinaste ¿Usar imagen huevo?
+// Contador de disparos - impactos
+// Resumen de disparos / aciertos 
+// Contar puntaje total
+// Salir
 					
