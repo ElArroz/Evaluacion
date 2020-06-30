@@ -89,7 +89,7 @@ public class Ejecutor implements Tablero {
 		}
 		if(lanzarHuevo(x,y) == true){  //nose si estara bien asi 
 			punto = 'k' + 10;
-		}else if(lanzarHuevo(x,y) == false)
+		}else if(lanzarHuevo(x,y) == true)
 		{
 			punto = 'C' + 7;
 		}
