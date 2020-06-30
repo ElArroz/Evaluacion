@@ -97,7 +97,7 @@ public class Ejecutor implements Tablero {
 	}
 
 	@Override
-	public  void mostrarMatrix() { //TODO Averiguar como usar este metodo desde Ejecutor
+	public void mostrarMatrix() { //TODO Averiguar como usar este metodo desde Ejecutor
 
 		DefaultTableModel model = (DefaultTableModel) Pantalla.tableroJuego.getModel();
 		model.setRowCount(tam);
