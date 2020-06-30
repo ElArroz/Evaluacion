@@ -102,6 +102,9 @@ public class Pantalla extends JFrame {
 				eje.setTablero(0, 5, 'K');
 				eje.setTablero(1, 5, 'K');
 				eje.setTablero(2, 5, 'K');
+				eje.setTablero(3, 10, 'T');
+				eje.setTablero(6, 6, 'C');
+				eje.setTablero(6, 7, 'C');
 				System.out.println("Carros creados");
 				
 				eje.mostrarMatrix();
