@@ -93,7 +93,7 @@ public class Ejecutor implements Tablero {
 
 	@Override
 	public int[] generarCoordenadas(String tipo) {
-		int fmax = 16, cmax = 15, ele = 3;
+		int fmax = 15, cmax = 16, ele = 3;
 		if (tipo.equalsIgnoreCase("k")) {
 			fmax = 14;
 			ele = 1;
@@ -102,10 +102,10 @@ public class Ejecutor implements Tablero {
 			ele = 2;
 		}
 
-		int fila = ThreadLocalRandom.current().nextInt(1, fmax);
-		int columna = ThreadLocalRandom.current().nextInt(0, cmax);
+		int fila = ThreadLocalRandom.current().nextInt(0, fmax);
+		int columna = ThreadLocalRandom.current().nextInt(1, cmax); 
 
-		return new int[] { fila, columna, ele };
+		return new int[] {fila, columna, ele };
 	}
 
 	@Override
