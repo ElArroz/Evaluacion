@@ -1,24 +1,24 @@
 package model;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class Huevo {
 
 	int fila;
 	int columna;
 	int puntaje;
-	//ArrayList<Huevo> realizarDisparos = new ArrayList<>();
+	ArrayList<String> realizarDisparos = new ArrayList<>();
 
 	public Huevo() {
 	}
 
-	/*public Huevo(int fila, int columna, int puntaje) {
+	public Huevo(int fila, int columna, int puntaje) {
 		this.fila = fila;
 		this.columna = columna;
 		this.puntaje = puntaje;
 	}
 
-	public void realizarDisparo(Huevo realizarDisparo) {
+	public void realizarDisparo(String realizarDisparo) {
 
 		realizarDisparos.add(realizarDisparo);
 
@@ -30,10 +30,10 @@ public class Huevo {
 			for (int j = 0; j < realizarDisparos.size() - 1; j++) {
 
 				System.out.println(realizarDisparos.get(i));
-
+				System.out.println(realizarDisparos.get(j));
 			}
 
-	}*/
+	}
 
 	public int getFila() {
 		return fila;

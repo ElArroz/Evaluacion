@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface Tablero {
 	
-	public ArrayList<Carro> listarCarro(Carro carros); 	
+	public ArrayList<Carro> listarCarro(Carro crearCarro); 	
 	public ArrayList<Huevo> listarHuevo(Huevo huevos);	
 	
 	//implementacion de carros
@@ -14,7 +14,7 @@ public interface Tablero {
 	//public ArrayList<Kromi> listarKromi();
 	//public ArrayList<Trupalla>listarTrupalla();
 	
-	public String crearCarro(); 					//revisar
+	public String crearCarro(String crearCarro); 					//revisar
 	
 	public String desplegarKromi(); 					//Nuevo revisar Victor
 	public String desplegarCaguano(); 					//Nuevo revisar Victor

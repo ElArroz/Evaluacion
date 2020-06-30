@@ -16,11 +16,33 @@ public class Ejecutor implements Tablero {
 	char tablero[][] = new char[tam + 1][tam + 1];
 	int punto = 0;
 	String mensaje = "         ";
+	
+	//ArrayList Carro listarCarro = new Arraylist[];
+	
+	ArrayList<String> crearCarros = new ArrayList<String>();
 
 	@Override
-	public ArrayList<Carro> listarCarro(Carro carros) {
-		// Carro.add(carros);
+	public ArrayList<Carro> listarCarro(Carro crearCarro) {
+		
+		//Carro listarCarro[x][y] = new Carro[x][y];
+		
+		/*for(int i = 0; i< crearCarros; i++)
+			
+		if(tablero[i][j] instanceof Kromi)
+		{
+			
+		}
+		if(tablero[i][j] instanceof Caguano)
+		{
+			
+		}
+		if(tablero[i][j] instanceof Trupalla)
+		{
+			
+		}*/
+		
 		return null;
+		
 	}
 
 	@Override
@@ -31,9 +53,13 @@ public class Ejecutor implements Tablero {
 	}
 
 	@Override
-	public String crearCarro() {
-		// TODO Auto-generated method stub
-		return null;
+	public String crearCarro(String crearCarro) {
+		
+		crearCarros.addAll(crearCarros);
+		
+		return crearCarro;
+
+		
 	}
 
 	@Override
@@ -166,5 +192,7 @@ public class Ejecutor implements Tablero {
 	public char[][] getTablero() {
 		return tablero;
 	}
+
+
 
 }
