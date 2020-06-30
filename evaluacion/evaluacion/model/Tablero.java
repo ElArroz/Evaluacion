@@ -21,7 +21,7 @@ public interface Tablero {
 	public String desplegarTrupalla(); 					//Nuevo revisar Victor
 	
 	public boolean lanzarHuevo(int x, int y); 		//se cambia a boolean para verificar impacto
-	public String mostrarMatrix();
+	public void mostrarMatrix();
 	public String generarMatrix(); 					//Nuevo genera el tablero "vacio"
 	public int calcularPuntaje(int x, int y);
 	public int[] generarCoordenadas(String tipo);  	//Genera las coordenadas y usa parentesis porque es un método (averiguar) //carlos
