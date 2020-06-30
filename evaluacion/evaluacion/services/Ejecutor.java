@@ -3,6 +3,9 @@ package services;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.swing.table.DefaultTableModel;
+
+import controller.Pantalla;
 import model.Caguano;
 import model.Carro;
 import model.Huevo;
@@ -13,7 +16,7 @@ import model.Trupalla;
 public class Ejecutor implements Tablero {
 	int tam = 15; // tamaño tablero
 	char tapa = '·'; // caracter que tapa la celda //176
-	char tablero[][] = new char[tam + 1][tam + 1];
+	char matrixJuego[][] = new char[tam + 1][tam + 1];
 	int punto = 0;
 	String mensaje = "         ";
 
@@ -38,7 +41,7 @@ public class Ejecutor implements Tablero {
 
 	@Override
 	public boolean lanzarHuevo(int x, int y) { // con respecto al impacto (si le pego)
-		if (tablero[x][y] == '.')
+		if (matrixJuego[x][y] == '.')
 			return false;
 		else
 			return true;
@@ -47,7 +50,7 @@ public class Ejecutor implements Tablero {
 	@Override
 	public int calcularPuntaje(int x, int y) {
 
-		switch (tablero[x][y]) {
+		switch (matrixJuego[x][y]) {
 		case 'K':
 			punto += 3;
 			break;
@@ -64,8 +67,29 @@ public class Ejecutor implements Tablero {
 	}
 
 	@Override
-	public String mostrarMatrix() {
-		String txt = "  ";
+	public  void mostrarMatrix() { //TODO Averiguar como usar este metodo desde Ejecutor
+
+		DefaultTableModel model = (DefaultTableModel) Pantalla.tableroJuego.getModel();
+		model.setRowCount(tam);
+
+		for (int i = 0; i < tam; i++) {
+			Pantalla.tableroJuego.setValueAt(i + 1, i, 0); // Encabezados filas 1 a 15
+		}
+
+		for (int i = 0; i < tam; i++) {
+			for (int j = 1; j < tam + 1; j++) {
+				
+				Pantalla.tableroJuego.setValueAt(matrixJuego[i][j], i, j);
+			}
+		}
+	}
+/*	public String mostrarMatrix() {
+		
+		
+		
+		/*
+		  String txt = "  ";
+		 
 		System.out.print(" \t"); // dejar un espacio en blanco
 
 		for (int i = 0; i < tam; i++) {
@@ -91,6 +115,7 @@ public class Ejecutor implements Tablero {
 		return null;
 	}
 
+*/
 	@Override
 	public int[] generarCoordenadas(String tipo) {
 		int fmax = 15, cmax = 16, ele = 3;
@@ -113,13 +138,13 @@ public class Ejecutor implements Tablero {
 
 		for (int i = 0; i < tam + 1; i++)
 			for (int j = 0; j < tam + 1; j++)
-				this.tablero[i][j] = tapa;
+				this.matrixJuego[i][j] = tapa;
 
 		return null;
 	}
 
 	public void setTablero(int x, int y, char letra) {
-		this.tablero[x][y] = letra;
+		this.matrixJuego[x][y] = letra;
 	}
 
 	@Override
@@ -164,7 +189,7 @@ public class Ejecutor implements Tablero {
 	}
 
 	public char[][] getTablero() {
-		return tablero;
+		return matrixJuego;
 	}
 
 }

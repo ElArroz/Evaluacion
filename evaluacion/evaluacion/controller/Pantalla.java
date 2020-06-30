@@ -37,7 +37,7 @@ import javax.swing.JTree;
 public class Pantalla extends JFrame {
 
 	private JPanel ventana;
-	private JTable tableroJuego;
+	public static JTable tableroJuego;
 	int tam = 15;
 	int puntos = 0;
 	static Ejecutor eje = new Ejecutor();
@@ -49,7 +49,6 @@ public class Pantalla extends JFrame {
 	private JButton btnFinPartida;
 	private JButton btnSalir;
 	private JButton btnJugar;
-	//private JButton btnPuntos;
 
 	public static void main(String[] args) {
 
@@ -67,25 +66,10 @@ public class Pantalla extends JFrame {
 
 	}
 
-	public void mostrarMatriz() {
-
-		DefaultTableModel model = (DefaultTableModel) tableroJuego.getModel();
-		model.setRowCount(tam);
-
-		for (int i = 0; i < tam; i++) {
-			tableroJuego.setValueAt(i + 1, i, 0); // Encabezados filas 1 a 15
-		}
-
-		for (int i = 0; i < tam; i++) {
-			for (int j = 1; j < tam + 1; j++) {
-				tableroJuego.setValueAt(matrixJuego[i][j], i, j);
-			}
-		}
-	}
-
+	
 	public Pantalla() {
 
-		setTitle("[ Batalla por Oscurilandia: A la conquista de la camara secreta ]");
+		setTitle("[ Batalla por Oscurilandia ]");
 		//setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(556, 449);
@@ -113,31 +97,25 @@ public class Pantalla extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
 				eje.generarMatrix();
+				
+				System.out.println("Matriz generada");
 				eje.setTablero(0, 5, 'K');
 				eje.setTablero(1, 5, 'K');
 				eje.setTablero(2, 5, 'K');
-
+				System.out.println("Carros creados");
 				
-				mostrarMatriz();
+				eje.mostrarMatrix();
+				
+				JOptionPane.showMessageDialog(null, "Carros desplegados correctamente");
 			}
 		});
 		panel.add(btnDesplegar);
-		
-	/*	btnPuntos = new JButton("Puntos");
-		btnPuntos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				eje.calcularPuntaje(puntos, puntos);		
-				}
-		});
-		panel.add(btnPuntos);
-		btnPuntos.setVisible(false);	
-		*/
 		
 		btnMostrarTablero = new JButton("Mostrar Tablero");
 		btnMostrarTablero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 		
-				mostrarMatriz();
+				eje.mostrarMatrix();
 			}
 		});
 		panel.add(btnMostrarTablero);
