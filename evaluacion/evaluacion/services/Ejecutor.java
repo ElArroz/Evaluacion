@@ -13,20 +13,21 @@ import model.Trupalla;
 public class Ejecutor implements Tablero {
 	int tam = 15; // tamaño tablero
 	char tapa = '·'; // caracter que tapa la celda //176
-	char tablero[][] = new char[tam + 1][tam+1];
+	char tablero[][] = new char[tam + 1][tam + 1];
 	int punto = 0;
-	String mensaje ="         ";
+	String mensaje = "         ";
 
 	@Override
-	public ArrayList<Carro> listarCarro() {
-		// TODO Auto-generated method stub
+	public ArrayList<Carro> listarCarro(Carro carros) {
+		// Carro.add(carros);
 		return null;
 	}
 
 	@Override
-	public ArrayList<Huevo> listarHuevo() {
-		// TODO Auto-generated method stub
+	public ArrayList<Huevo> listarHuevo(Huevo huevos) {
+		// Huevo.add(huevos);
 		return null;
+
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class Ejecutor implements Tablero {
 	}
 
 	@Override
-	public boolean lanzarHuevo(int x, int y) { //con respecto al impacto (si le pego)
+	public boolean lanzarHuevo(int x, int y) { // con respecto al impacto (si le pego)
 		if (tablero[x][y] == '.')
 			return false;
 		else
@@ -64,24 +65,25 @@ public class Ejecutor implements Tablero {
 
 	@Override
 	public String mostrarMatrix() {
-		String txt="  "; 
+		String txt = "  ";
 		System.out.print(" \t"); // dejar un espacio en blanco
 
 		for (int i = 0; i < tam; i++) {
 			System.out.print((char) (i + 65) + "   "); // Llenamos la primera fila con letras 65 es "A"
-			this.mensaje=this.mensaje+(char) (i + 65) + "   ";
+			this.mensaje = this.mensaje + (char) (i + 65) + "   ";
 		}
 		System.out.println();
 		for (int i = 0; i < tam + 1; i++) {
 			if (i != 0) {
 				System.out.printf("%2d\t", i);
-				if (i>9) txt="";
-				this.mensaje=this.mensaje+"\n "+txt+i;
+				if (i > 9)
+					txt = "";
+				this.mensaje = this.mensaje + "\n " + txt + i;
 			}
 
 			for (int j = 0; j < tam; j++) {
 				System.out.print(this.tablero[i][j] + "   ");
-				this.mensaje=this.mensaje+"    "+(this.tablero[i][j]);
+				this.mensaje = this.mensaje + "    " + (this.tablero[i][j]);
 			}
 			System.out.println();
 
@@ -144,31 +146,25 @@ public class Ejecutor implements Tablero {
 		return null;
 	}
 
-	@Override
-	public ArrayList<Caguano> listarCaguano() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Kromi> listarKromi() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Trupalla> listarTrupalla() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	/*
+	 * @Override public ArrayList<Caguano> listarCaguano() { // TODO Auto-generated
+	 * method stub return null; }
+	 * 
+	 * @Override public ArrayList<Kromi> listarKromi() { // TODO Auto-generated
+	 * method stub return null; }
+	 * 
+	 * @Override public ArrayList<Trupalla> listarTrupalla() { // TODO
+	 * Auto-generated method stub return null; }
+	 */
 
 	@Override
 	public String getMatrix() {
 		mostrarMatrix();
 		return this.mensaje;
 	}
-	
+
 	public char[][] getTablero() {
 		return tablero;
 	}
+
 }

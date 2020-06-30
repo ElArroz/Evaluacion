@@ -6,12 +6,13 @@ import java.util.ArrayList;
 
 public interface Tablero {
 	
-	public ArrayList<Carro> listarCarro(); 	
-	public ArrayList<Huevo> listarHuevo();	
+	public ArrayList<Carro> listarCarro(Carro carros); 	
+	public ArrayList<Huevo> listarHuevo(Huevo huevos);	
+	
 	//implementacion de carros
-	public ArrayList<Caguano> listarCaguano();
-	public ArrayList<Kromi> listarKromi();
-	public ArrayList<Trupalla>listarTrupalla();
+	//public ArrayList<Caguano> listarCaguano();
+	//public ArrayList<Kromi> listarKromi();
+	//public ArrayList<Trupalla>listarTrupalla();
 	
 	public String crearCarro(); 					//revisar
 	
@@ -26,6 +27,7 @@ public interface Tablero {
 	public int[] generarCoordenadas(String tipo);  	//Genera las coordenadas y usa parentesis porque es un método (averiguar) //carlos
 	public String verificarCoordenadas(String tiro);//Revisa que las coordenadas esten bien y las pasa a numero
 	public String getMatrix();
+	
 }
 
 

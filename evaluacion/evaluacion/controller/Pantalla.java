@@ -39,6 +39,7 @@ public class Pantalla extends JFrame {
 	private JPanel ventana;
 	private JTable tableroJuego;
 	int tam = 15;
+	int puntos = 0;
 	static Ejecutor eje = new Ejecutor();
 	char matrixJuego[][] = eje.getTablero();
 	private JPanel panel;
@@ -48,6 +49,7 @@ public class Pantalla extends JFrame {
 	private JButton btnFinPartida;
 	private JButton btnSalir;
 	private JButton btnJugar;
+	//private JButton btnPuntos;
 
 	public static void main(String[] args) {
 
@@ -121,10 +123,20 @@ public class Pantalla extends JFrame {
 		});
 		panel.add(btnDesplegar);
 		
-				
+	/*	btnPuntos = new JButton("Puntos");
+		btnPuntos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eje.calcularPuntaje(puntos, puntos);		
+				}
+		});
+		panel.add(btnPuntos);
+		btnPuntos.setVisible(false);	
+		*/
+		
 		btnDisparoManual = new JButton("Disparo Manual");
 		btnDisparoManual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+		
 			}
 		});
 		panel.add(btnDisparoManual);
@@ -147,6 +159,7 @@ public class Pantalla extends JFrame {
 				btnDisparoAzar.setVisible(true);
 				btnDisparoManual.setVisible(true);
 				btnFinPartida.setVisible(true);
+				//btnPuntos.setVisible(true);
 				
 				btnDesplegar.setVisible(false);
 				btnJugar.setVisible(false);
@@ -161,6 +174,13 @@ public class Pantalla extends JFrame {
 		btnDisparoAzar = new JButton("Disparo Azar");
 		btnDisparoAzar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				tableroJuego.setVisible(true);
+				eje.setTablero(0, 5, 'H');
+				eje.setTablero(2, 2, 'H');
+				eje.setTablero(4,6, 'H');
+				eje.setTablero(4,9, 'H');
+				mostrarMatriz();
+				
 			}
 		});
 		panel.add(btnDisparoAzar);

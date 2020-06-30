@@ -1,20 +1,39 @@
 package model;
 
+//import java.util.ArrayList;
 
 public class Huevo {
-	
+
 	int fila;
 	int columna;
 	int puntaje;
-	
+	//ArrayList<Huevo> realizarDisparos = new ArrayList<>();
+
 	public Huevo() {
 	}
-	
-	public Huevo(int fila, int columna, int puntaje) {
+
+	/*public Huevo(int fila, int columna, int puntaje) {
 		this.fila = fila;
 		this.columna = columna;
 		this.puntaje = puntaje;
 	}
+
+	public void realizarDisparo(Huevo realizarDisparo) {
+
+		realizarDisparos.add(realizarDisparo);
+
+	}
+
+	public void consultarDisparos() {
+
+		for (int i = 0; i < realizarDisparos.size(); i++)
+			for (int j = 0; j < realizarDisparos.size() - 1; j++) {
+
+				System.out.println(realizarDisparos.get(i));
+
+			}
+
+	}*/
 
 	public int getFila() {
 		return fila;
@@ -44,7 +63,5 @@ public class Huevo {
 	public String toString() {
 		return "Huevo [fila=" + fila + ", columna=" + columna + ", puntaje=" + puntaje + "]";
 	}
-	
-	
-	
+
 }
