@@ -8,8 +8,8 @@ public class Trupalla extends Carro {
 	public Trupalla() {
 	}
 
-	public Trupalla(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int nivelArmadura, String nombreManipulador) {
-		super(cantidadOcupantes, fechaIngreso, fila, columna);
+	public Trupalla(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int estado, int nivelArmadura, String nombreManipulador) {
+		super(cantidadOcupantes, fechaIngreso, fila, columna, estado);
 		this.nivelArmadura = nivelArmadura;
 		this.nombreManipulador = nombreManipulador;
 	}

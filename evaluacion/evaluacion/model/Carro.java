@@ -8,19 +8,19 @@ public class Carro {
 	String fechaIngreso;
 	int fila;
 	int columna;
-	//int estado;
+	int estado;
 	//ArrayList<Huevo> recibeDisparos = new ArrayList();
 	
 	public Carro() {
 		super();
 	}
 
-	public Carro(int cantidadOcupantes, String fechaIngreso, int fila, int columna) {
+	public Carro(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int estado) {
 		this.cantidadOcupantes = cantidadOcupantes;
 		this.fechaIngreso = fechaIngreso;
 		this.fila = fila;
 		this.columna = columna;
-		//this.estado = estado;
+		this.estado = estado;
 	}
 	
 	/*public void recibirDisparo(Huevo recibeDisparos) {
@@ -38,13 +38,13 @@ public class Carro {
 	
 	}*/
 
-	public int getEstado() {
+	/*public int getEstado() {
 		return estado;
 	}
 
 	public void setEstado(int estado) {
 		this.estado = estado;
-	}
+	}*/
 
 	public int getCantidadOcupantes() {
 		return cantidadOcupantes;
