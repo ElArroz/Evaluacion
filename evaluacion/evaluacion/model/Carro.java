@@ -4,11 +4,11 @@ package model;
 
 public class Carro {
 	
-	int cantidadOcupantes;
-	String fechaIngreso;
-	int fila;
-	int columna;
-	int estado;
+	public int cantidadOcupantes;
+	public String fechaIngreso;
+	public int fila;
+	public int columna;
+	public int estado;
 	//ArrayList<Huevo> recibeDisparos = new ArrayList();
 	
 	public Carro() {
@@ -38,13 +38,13 @@ public class Carro {
 	
 	}*/
 
-	/*public int getEstado() {
+	public int getEstado() {
 		return estado;
 	}
 
 	public void setEstado(int estado) {
 		this.estado = estado;
-	}*/
+	}
 
 	public int getCantidadOcupantes() {
 		return cantidadOcupantes;
