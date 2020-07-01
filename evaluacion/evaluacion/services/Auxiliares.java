@@ -11,9 +11,9 @@ public class Auxiliares {
 		// llenar los arreglos
 		
 		
-		//for (int i = 0; i<3; i++)
-		 int salir=0;	
-		//do
+		for (int i = 0; i<2; i++)
+		int salir=0;	
+		do
 			int arre[]=eje.generarCoordenadas("K");	
 			int x= arre[0]; 
 			int y= arre[1];
@@ -25,35 +25,39 @@ public class Auxiliares {
 									  eje.setTablero(x, y,'K');
 									  eje.setTablero(x+1,y,'K');
 									  eje.setTablero(x+2,y,'K');
+									  kromi.add(i);
 									  salir=1;
 							  }		  
 			} 
 			}
-			//while (salir ==0)
+			while (salir ==0)
 			//Generar instancia de Kromi
 			//Agregar a carros mediante add.....
-			//Fin for
-		/*	
-			int arre[]=eje.generarCoordenadas("C");	
-
-			if Tablero[arre[0]],[arre[1]=='·' { //C
-					  if Tablero[arre[0]],[arre[1]+1]=='·'{
-									  eje.setTablero(arre[0],arre[1],'C');
-									  eje.setTablero(arre[0],arre[1]+1],'C');
-							  }
-					  
-			} 
-			}
-
-			int arre[]=eje.generarCoordenadas("T");	
-
-			if Tablero[arre[0]],[arre[1]=='·' { //K
-									  eje.setTablero(arre[0],arre[1],'T');
-							  }
-					  
-			} 
-			}
-			
+		
+			for (int i = 0; i<4; i++)
+			int salir=0;	
+			do
+				if (eje.matrixJuego[x][y]=='·') { 					
+					  if (eje.matrixJuego[x][y+1]=='·'){
+						  eje.setTablero(x, y,'C');
+						  eje.setTablero(x,y+1,'C');
+						  cagunano.add(i);
+						  salir=1;
+						  
+			 while (salir ==0)
+			//Generar instancia de Caguano
+			//Agregar a carros mediante add.....
+	
+			for (int i = 0; i<9; i++)
+			int salir=0;	
+			do
+				if (eje.matrixJuego[x][y]=='·') { 					
+					eje.setTablero(x, y,'K');
+					trupalla.add(i);
+					salir=1;
+			while (salir ==0)	 
+				//Generar instancia de Trupalla
+				//Agregar a carros mediante add.....
 			return null;
 		}
 
