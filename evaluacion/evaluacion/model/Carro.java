@@ -8,7 +8,7 @@ public class Carro {
 	String fechaIngreso;
 	int fila;
 	int columna;
-	//int estado;
+	int estado;
 	//ArrayList<Huevo> recibeDisparos = new ArrayList();
 	
 	public Carro() {
