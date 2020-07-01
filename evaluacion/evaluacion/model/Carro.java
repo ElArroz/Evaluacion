@@ -4,23 +4,23 @@ package model;
 
 public class Carro {
 	
-	int cantidadOcupantes;
-	String fechaIngreso;
-	int fila;
-	int columna;
-	int estado;
+	public int cantidadOcupantes;
+	public String fechaIngreso;
+	public int fila;
+	public int columna;
+	public int estado;
 	//ArrayList<Huevo> recibeDisparos = new ArrayList();
 	
 	public Carro() {
 		super();
 	}
 
-	public Carro(int cantidadOcupantes, String fechaIngreso, int fila, int columna) {
+	public Carro(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int estado) {
 		this.cantidadOcupantes = cantidadOcupantes;
 		this.fechaIngreso = fechaIngreso;
 		this.fila = fila;
 		this.columna = columna;
-		//this.estado = estado;
+		this.estado = estado;
 	}
 	
 	/*public void recibirDisparo(Huevo recibeDisparos) {

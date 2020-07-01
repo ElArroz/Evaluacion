@@ -49,14 +49,13 @@ public class Pantalla extends JFrame {
 	private JButton btnFinPartida;
 	private JButton btnSalir;
 	private JButton btnJugar;
-	//private JButton btnPuntos;
 
 	public static void main(String[] args) {
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+
 					Pantalla frame = new Pantalla();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -86,7 +85,7 @@ public class Pantalla extends JFrame {
 	public Pantalla() {
 
 		setTitle("[ Batalla por Oscurilandia: A la conquista de la camara secreta ]");
-		//setAlwaysOnTop(true);
+		// setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(556, 449);
 		setResizable(false);
@@ -103,48 +102,34 @@ public class Pantalla extends JFrame {
 		panel = new JPanel();
 		panel.setBounds(20, 295, 516, 106);
 		panel.setBackground(Color.GRAY);
-		
-		
-		
+
 		panel.setLayout(new GridLayout(0, 3, 0, 0));
-		
+
 		btnDesplegar = new JButton("Desplegar Carros");
 		btnDesplegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
 				eje.generarMatrix();
-				//eje.crearCarro(null);
-				//eje.listarCarro();
+				// eje.crearCarro(null);
+				// eje.listarCarro();
 				eje.setTablero(0, 5, 'K');
 				eje.setTablero(1, 5, 'K');
 				eje.setTablero(2, 5, 'K');
 
-				
 				mostrarMatriz();
 			}
 		});
 		panel.add(btnDesplegar);
-		
-	/*	btnPuntos = new JButton("Puntos");
-		btnPuntos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				eje.calcularPuntaje(puntos, puntos);		
-				}
-		});
-		panel.add(btnPuntos);
-		btnPuntos.setVisible(false);	
-		*/
-		
+
 		btnMostrarTablero = new JButton("Mostrar Tablero");
 		btnMostrarTablero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		
+
 				mostrarMatriz();
 			}
 		});
 		panel.add(btnMostrarTablero);
 		btnMostrarTablero.setVisible(false);
-				
 
 		btnFinPartida = new JButton("Finalizar partida");
 		btnFinPartida.addActionListener(new ActionListener() {
@@ -153,95 +138,80 @@ public class Pantalla extends JFrame {
 		});
 		panel.add(btnFinPartida);
 		btnFinPartida.setVisible(false);
-		
+
 		btnJugar = new JButton("JUGAR");
 		btnJugar.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
+
 				btnDisparar.setVisible(true);
 				btnMostrarTablero.setVisible(true);
 				btnFinPartida.setVisible(true);
 				btnDesplegar.setVisible(false);
 				btnJugar.setVisible(false);
-				
-			
+
 			}
 		});
-		
-		
+
 		panel.add(btnJugar);
-		
+
 		btnDisparar = new JButton("DISPARAR");
 		btnDisparar.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnDisparar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				int option = JOptionPane.showConfirmDialog(
-						null, 
-						"¿Disparo aleatorio?",
-						"LANZAR HUEVO", 
-						JOptionPane.YES_NO_OPTION, 
-						JOptionPane.QUESTION_MESSAGE);
-					if (option == JOptionPane.YES_OPTION) {
-						int cord[]= eje.generarCoordenadas("H");
-						eje.setTablero(cord[0], cord[1], 'H');
-						char col=(char) (64+cord[1]);
-						int x=cord[1];
-						int y=cord[0];
-						System.out.println("Cordenadas al azar "+ String.valueOf(col)+(y+1)+" ("+x+","+y+")");
-					}
-					else {
-						String cord = JOptionPane.showInputDialog("Ingresa coordenada (Ejemplo: A1)");
-						//enviar a verificar
-						System.out.println("Se ingresa coordenadas "+cord+" y se llama auxilia lanza huevo");
 
-					}
-					//llamar auxiliar;
-				
+				int option = JOptionPane.showConfirmDialog(null, "¿Disparo aleatorio?", "LANZAR HUEVO",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (option == JOptionPane.YES_OPTION) {
+					int cord[] = eje.generarCoordenadas("H");
+					eje.setTablero(cord[0], cord[1], 'H');
+					char col = (char) (64 + cord[1]);
+					int x = cord[1];
+					int y = cord[0];
+					System.out
+							.println("Cordenadas al azar " + String.valueOf(col) + (y + 1) + " (" + x + "," + y + ")");
+				} else {
+					String cord = JOptionPane.showInputDialog("Ingresa coordenada (Ejemplo: A1)");
+					// enviar a verificar
+					System.out.println("Se ingresa coordenadas " + cord + " y se llama auxilia lanza huevo");
+
+				}
+				// llamar auxiliar;
+
 			}
 		});
 		panel.add(btnDisparar);
 		btnDisparar.setVisible(false);
-		
+
 		btnSalir = new JButton("SALIR");
 		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				                // Se pide una confirmación antes de finalizar el programa
-						int option = JOptionPane.showConfirmDialog(
-							null, 
-							"¿Estás seguro de que quieres cerrar la aplicación?",
-							"Confirmación de cierre", 
-							JOptionPane.YES_NO_OPTION, 
-							JOptionPane.QUESTION_MESSAGE);
-						if (option == JOptionPane.YES_OPTION) {
-							System.exit(0);
-						}
-				//	}
-			//	});
-			//	System.exit(0);
-				
-			/*	Main m = new Main();
-				m.setVisible(true);
-				m.setSize(560,450);
-				setLocationRelativeTo(null);
-				
-				ventana.setVisible(false);
-				dispose();
-			*/	
+
+				// Se pide una confirmación antes de finalizar el programa
+				int option = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres cerrar la aplicación?",
+						"Confirmación de cierre", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (option == JOptionPane.YES_OPTION) {
+					System.exit(0);
+				}
+				// }
+				// });
+				// System.exit(0);
+
+				/*
+				 * Main m = new Main(); m.setVisible(true); m.setSize(560,450);
+				 * setLocationRelativeTo(null);
+				 * 
+				 * ventana.setVisible(false); dispose();
+				 */
 			}
 		});
-		
-		
+
 		panel.add(btnSalir);
-		
 
 		tableroJuego = new JTable();
 		tableroJuego.setRowSelectionAllowed(false);
-		//tableroJuego.setForeground(Color.BLACK);
+		// tableroJuego.setForeground(Color.BLACK);
 		tableroJuego.setVisible(false);
 		tableroJuego.setBorder(null);
 		tableroJuego.getTableHeader().setReorderingAllowed(false);

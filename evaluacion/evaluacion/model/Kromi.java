@@ -9,8 +9,8 @@ public class Kromi extends Carro {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Kromi(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int anioFabricacion, String marca) {
-		super(cantidadOcupantes, fechaIngreso, fila, columna);
+	public Kromi(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int estado, int anioFabricacion, String marca) {
+		super(cantidadOcupantes, fechaIngreso, fila, columna, estado);
 		this.anioFabricacion = anioFabricacion;
 		this.marca = marca;
 	}

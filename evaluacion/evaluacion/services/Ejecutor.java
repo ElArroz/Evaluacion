@@ -70,21 +70,50 @@ public class Ejecutor implements Tablero {
 	@Override
 	public int calcularPuntaje(int x, int y) {
 
+		//Auxiliares aux = new Auxiliares(); aux.desplegarCarros().length
+
+		int estado = 0;
+		//Carro.estado = 0;
+
 		switch (matrixJuego[x][y]) {
 		case 'K':
 			punto += 3;
-			// cambiar K por H
-			// recorrer las instancias de carro - KROMI buscando x,y en el arreglo de ubicaciones y luego Restar a estado -1  
-			// if estado es = 0  se suma +10 a punto
+			setTablero(x, y, 'H'); // cambiar K por H
+			for (int i = 0; i < matrixJuego[x][y]; i++) {// recorrer las instancias de carro - KROMI buscando x,y en el
+															// arreglo de ubicaciones y luego Restar a estado -1
+				if ( estado == 0) {// if estado es = 0 se suma +10 a punto
+					punto += 10;
+
+				}
+			}
+
 			break;
 		case 'C':
 			punto += 2;
+			setTablero(x, y, 'H'); // cambiar C por H
+			for (int i = 0; i < matrixJuego[x][y]; i++) {// recorrer las instancias de carro - Caguano buscando x,y en
+															// el
+															// arreglo de ubicaciones y luego Restar a estado -1
+				if (estado == 0) {// if estado es = 0 se suma +10 a punto
+					punto += 10;
+
+				}
+			}
 			break;
 		case 'T':
 			punto += 1;
+			setTablero(x, y, 'H'); // cambiar T por H
+			for (int i = 0; i < matrixJuego[x][y]; i++) {// recorrer las instancias de carro - Trupalla buscando x,y en
+															// el
+															// arreglo de ubicaciones y luego Restar a estado -1
+				if (estado == 0) {// if estado es = 0 se suma +10 a punto
+					punto += 10;
+
+				}
+			}
 			break;
 		}
-		
+
 		return punto;
 	}
 
@@ -106,7 +135,6 @@ public class Ejecutor implements Tablero {
 		}
 	}
 
-	
 	@Override
 	public int[] generarCoordenadas(String tipo) {
 		int fmax = 15, cmax = 16, ele = 3;
