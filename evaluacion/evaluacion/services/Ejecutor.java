@@ -207,7 +207,7 @@ public class Ejecutor implements Tablero {
 	}
 
 	public char[][] getTablero() {
-		return matrixJuego;
+		return this.matrixJuego;
 	}
 
 }

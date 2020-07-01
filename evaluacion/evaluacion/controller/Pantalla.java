@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import services.Auxiliares;
 import services.Ejecutor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -45,7 +46,10 @@ public class Pantalla extends JFrame {
 	public static JTable tableroJuego;
 	int tam = 15;
 	int puntos = 0;
+	
 	static Ejecutor eje = new Ejecutor();
+	static Auxiliares aux = new Auxiliares();
+	
 	char matrixJuego[][] = eje.getTablero();
 	private JButton btnDesplegar;
 	private JButton btnMostrarTablero;
@@ -162,11 +166,18 @@ public class Pantalla extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
 				eje.generarMatrix();
+				
+				aux.desplegarCarros();  //K,C,T
+				
+				
+				
+				/*
 				eje.setTablero(0, 5, 'K');
 				eje.setTablero(1, 5, 'K');
 				eje.setTablero(2, 5, 'K');
-
-				mostrarMatriz();
+				 */
+				
+				//mostrarMatriz();
 			}
 		});
 
