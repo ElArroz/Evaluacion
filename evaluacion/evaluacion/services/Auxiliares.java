@@ -15,15 +15,16 @@ public class Auxiliares {
 		char array[][] =  new char[15][15];
 		// Generar instancia de Kromi
 	//	for (int i = 0; i < a-1; i++) {
-			Generar("K");
+			//Generar("K");
 		//	eje.generarMatrix();
-		System.out.println(x+" "+y);
+		//System.out.println(x+" "+y);
 		
 		for (int i=0; i<6; i++) {
 			for (int j=0; j<6; j++) {
 				
 				 array = eje.matrixJuego;
-				System.out.println(array[i][j]);
+				//System.out.println(array[i][j]);
+				eje.setTablero(x, y, 'K');
 			}
 		}
 			

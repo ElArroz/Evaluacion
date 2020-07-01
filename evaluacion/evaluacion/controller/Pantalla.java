@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import services.Auxiliares;
+import services.DiegoAux;
 import services.Ejecutor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -49,6 +50,7 @@ public class Pantalla extends JFrame {
 	
 	static Ejecutor eje = new Ejecutor();
 	static Auxiliares aux = new Auxiliares();
+	static DiegoAux daux = new DiegoAux();
 	
 	char matrixJuego[][] = eje.getTablero();
 	private JButton btnDesplegar;
@@ -108,13 +110,6 @@ public class Pantalla extends JFrame {
 		scrollPane.setBounds(16, 10, 516, 265);
 		scrollPane.setEnabled(false);
 
-		/*
-		 * btnPuntos = new JButton("Puntos"); btnPuntos.addActionListener(new
-		 * ActionListener() { public void actionPerformed(ActionEvent e) {
-		 * eje.calcularPuntaje(puntos, puntos); } }); panel.add(btnPuntos);
-		 * btnPuntos.setVisible(false);
-		 */
-
 		tableroJuego = new JTable();
 		tableroJuego.setRowSelectionAllowed(false);
 		tableroJuego.setVisible(false);
@@ -166,8 +161,21 @@ public class Pantalla extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
 				eje.generarMatrix();
+				/*int cord[] = eje.generarCoordenadas("K");
+				if(eje.getTablero().length == '.') {
+					eje.setTablero(cord[0], cord[1], 'K');
+					eje.setTablero(cord[1], cord[1], 'K');
+					eje.setTablero(cord[2], cord[1], 'K');
+					int x = cord[0];
+					int y = cord[1];
+				}*/
 				
-				aux.desplegarCarros();  //K,C,T
+				//char col = (char) (64 + cord[1]);
+				
+				
+				daux.desplegarCarros();
+			
+				//aux.desplegarCarros();  //K,C,T
 				
 				
 				
@@ -177,7 +185,7 @@ public class Pantalla extends JFrame {
 				eje.setTablero(2, 5, 'K');
 				 */
 				
-				//mostrarMatriz();
+				mostrarMatriz();
 			}
 		});
 
