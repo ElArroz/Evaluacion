@@ -73,6 +73,9 @@ public class Ejecutor implements Tablero {
 		switch (matrixJuego[x][y]) {
 		case 'K':
 			punto += 3;
+			// cambiar K por H
+			// recorrer las instancias de carro - KROMI buscando x,y en el arreglo de ubicaciones y luego Restar a estado -1  
+			// if estado es = 0  se suma +10 a punto
 			break;
 		case 'C':
 			punto += 2;
@@ -81,11 +84,7 @@ public class Ejecutor implements Tablero {
 			punto += 1;
 			break;
 		}
-		if (lanzarHuevo(x, y) == true) { // nose si estara bien asi
-			punto = 'k' + 10;
-		} else if (lanzarHuevo(x, y) == true) {
-			punto = 'C' + 7;
-		}
+		
 		return punto;
 	}
 
@@ -107,28 +106,7 @@ public class Ejecutor implements Tablero {
 		}
 	}
 
-	/*
-	 * public String mostrarMatrix() {
-	 * 
-	 * 
-	 * 
-	 * /* String txt = "  ";
-	 * 
-	 * System.out.print(" \t"); // dejar un espacio en blanco
-	 * 
-	 * for (int i = 0; i < tam; i++) { System.out.print((char) (i + 65) + "   "); //
-	 * Llenamos la primera fila con letras 65 es "A" this.mensaje = this.mensaje +
-	 * (char) (i + 65) + "   "; } System.out.println(); for (int i = 0; i < tam + 1;
-	 * i++) { if (i != 0) { System.out.printf("%2d\t", i); if (i > 9) txt = "";
-	 * this.mensaje = this.mensaje + "\n " + txt + i; }
-	 * 
-	 * for (int j = 0; j < tam; j++) { System.out.print(this.tablero[i][j] + "   ");
-	 * this.mensaje = this.mensaje + "    " + (this.tablero[i][j]); }
-	 * System.out.println();
-	 * 
-	 * } return null; }
-	 * 
-	 */
+	
 	@Override
 	public int[] generarCoordenadas(String tipo) {
 		int fmax = 15, cmax = 16, ele = 3;
