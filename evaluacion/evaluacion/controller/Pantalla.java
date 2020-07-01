@@ -33,6 +33,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.BevelBorder;
 import java.awt.Font;
 import javax.swing.JTree;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.JToolBar;
+import java.awt.Cursor;
+import javax.swing.JLayeredPane;
+import javax.swing.ImageIcon;
 
 public class Pantalla extends JFrame {
 
@@ -42,13 +47,13 @@ public class Pantalla extends JFrame {
 	int puntos = 0;
 	static Ejecutor eje = new Ejecutor();
 	char matrixJuego[][] = eje.getTablero();
-	private JPanel panel;
 	private JButton btnDesplegar;
 	private JButton btnMostrarTablero;
 	private JButton btnDisparar;
 	private JButton btnFinPartida;
 	private JButton btnSalir;
 	private JButton btnJugar;
+	private JLabel imgFondo;
 
 	public static void main(String[] args) {
 
@@ -96,22 +101,67 @@ public class Pantalla extends JFrame {
 		setContentPane(ventana);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(20, 17, 516, 265);
+		scrollPane.setBounds(16, 10, 516, 265);
 		scrollPane.setEnabled(false);
 
-		panel = new JPanel();
-		panel.setBounds(20, 295, 516, 106);
-		panel.setBackground(Color.GRAY);
+		/*
+		 * btnPuntos = new JButton("Puntos"); btnPuntos.addActionListener(new
+		 * ActionListener() { public void actionPerformed(ActionEvent e) {
+		 * eje.calcularPuntaje(puntos, puntos); } }); panel.add(btnPuntos);
+		 * btnPuntos.setVisible(false);
+		 */
 
-		panel.setLayout(new GridLayout(0, 3, 0, 0));
+		tableroJuego = new JTable();
+		tableroJuego.setRowSelectionAllowed(false);
+		tableroJuego.setVisible(false);
+		tableroJuego.setBorder(null);
+		tableroJuego.getTableHeader().setReorderingAllowed(false);
+		tableroJuego.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
+		tableroJuego.setModel(new DefaultTableModel(new Object[][] {},
+				new String[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" }) {
+			boolean[] columnEditables = new boolean[] { false, false, false, false, false, false, false, false, false,
+					false, false, false, false, false, false, false, };
+
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+
+		DefaultTableModel model = (DefaultTableModel) tableroJuego.getModel();
+		model.setRowCount(tam);
+
+		for (int i = 0; i < tam; i++) {
+			tableroJuego.setValueAt(i + 1, i, 0); // Encabezados filas 1 a 15
+		}
+
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+
+		for (int i = 0; i < 16; i++) {
+			tableroJuego.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+			tableroJuego.getColumnModel().getColumn(i).setResizable(false);
+
+		}
+
+		scrollPane.setViewportView(tableroJuego);
+		ventana.setLayout(null);
+		ventana.add(scrollPane);
+
+		imgFondo = new JLabel("");
+		imgFondo.setIcon(new ImageIcon(Pantalla.class.getResource("/img/Huevo2.png")));
+		imgFondo.setBounds(16, 299, 165, 111);
+		imgFondo.setVisible(false);
+		ventana.add(imgFondo);
+
+//Boton Desplegar
 		btnDesplegar = new JButton("Desplegar Carros");
+		btnDesplegar.setBounds(16, 299, 165, 50);
+		ventana.add(btnDesplegar);
 		btnDesplegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
 				eje.generarMatrix();
-				// eje.crearCarro(null);
-				// eje.listarCarro();
 				eje.setTablero(0, 5, 'K');
 				eje.setTablero(1, 5, 'K');
 				eje.setTablero(2, 5, 'K');
@@ -119,28 +169,12 @@ public class Pantalla extends JFrame {
 				mostrarMatriz();
 			}
 		});
-		panel.add(btnDesplegar);
 
-		btnMostrarTablero = new JButton("Mostrar Tablero");
-		btnMostrarTablero.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				mostrarMatriz();
-			}
-		});
-		panel.add(btnMostrarTablero);
-		btnMostrarTablero.setVisible(false);
-
-		btnFinPartida = new JButton("Finalizar partida");
-		btnFinPartida.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		panel.add(btnFinPartida);
-		btnFinPartida.setVisible(false);
-
+// Boton Jugar
 		btnJugar = new JButton("JUGAR");
+		btnJugar.setBounds(16, 360, 165, 50);
 		btnJugar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		ventana.add(btnJugar);
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -149,14 +183,28 @@ public class Pantalla extends JFrame {
 				btnFinPartida.setVisible(true);
 				btnDesplegar.setVisible(false);
 				btnJugar.setVisible(false);
+				imgFondo.setVisible(true);
 
 			}
 		});
 
-		panel.add(btnJugar);
+//Boton MostrarTablero
+		btnMostrarTablero = new JButton("Mostrar Tablero");
+		btnMostrarTablero.setBounds(192, 299, 165, 50);
+		btnMostrarTablero.setVisible(false);
+		ventana.add(btnMostrarTablero);
+		btnMostrarTablero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarMatriz();
+			}
+		});
 
+//Boton Disparar
 		btnDisparar = new JButton("DISPARAR");
+		btnDisparar.setBounds(192, 360, 165, 50);
 		btnDisparar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnDisparar.setVisible(false);
+		ventana.add(btnDisparar);
 		btnDisparar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -180,11 +228,23 @@ public class Pantalla extends JFrame {
 
 			}
 		});
-		panel.add(btnDisparar);
-		btnDisparar.setVisible(false);
 
+//Boton FinPartida
+		btnFinPartida = new JButton("Finalizar partida");
+		btnFinPartida.setBounds(367, 299, 165, 50);
+		btnFinPartida.setVisible(false);
+		ventana.add(btnFinPartida);
+		btnFinPartida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO finPardida
+			}
+		});
+
+//Boton Salir
 		btnSalir = new JButton("SALIR");
+		btnSalir.setBounds(367, 360, 165, 50);
 		btnSalir.setFont(new Font("Tahoma", Font.BOLD, 18));
+		ventana.add(btnSalir);
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -194,60 +254,8 @@ public class Pantalla extends JFrame {
 				if (option == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
-				// }
-				// });
-				// System.exit(0);
-
-				/*
-				 * Main m = new Main(); m.setVisible(true); m.setSize(560,450);
-				 * setLocationRelativeTo(null);
-				 * 
-				 * ventana.setVisible(false); dispose();
-				 */
 			}
 		});
 
-		panel.add(btnSalir);
-
-		tableroJuego = new JTable();
-		tableroJuego.setRowSelectionAllowed(false);
-		// tableroJuego.setForeground(Color.BLACK);
-		tableroJuego.setVisible(false);
-		tableroJuego.setBorder(null);
-		tableroJuego.getTableHeader().setReorderingAllowed(false);
-		tableroJuego.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-		tableroJuego.setModel(new DefaultTableModel(new Object[][] {},
-				new String[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" }) {
-			boolean[] columnEditables = new boolean[] { false, false, false, false, false, false, false, false, false,
-					false, false, false, false, false, false, false, };
-
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
-		});
-
-		// tableroJuego.setRowHeight(20);
-
-		DefaultTableModel model = (DefaultTableModel) tableroJuego.getModel();
-		model.setRowCount(tam);
-
-		for (int i = 0; i < tam; i++) {
-			tableroJuego.setValueAt(i + 1, i, 0); // Encabezados filas 1 a 15
-		}
-
-		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-
-		for (int i = 0; i < 16; i++) {
-			tableroJuego.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-			tableroJuego.getColumnModel().getColumn(i).setResizable(false);
-
-		}
-
-		scrollPane.setViewportView(tableroJuego);
-		ventana.setLayout(null);
-		ventana.add(scrollPane);
-		ventana.add(panel);
 	}
 }
