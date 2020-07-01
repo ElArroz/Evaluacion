@@ -74,7 +74,6 @@ public class Ejecutor implements Tablero {
 
 		int estado = 0;
 		//Carro.estado = 0;
-
 		switch (matrixJuego[x][y]) {
 		case 'K':
 			punto += 3;
