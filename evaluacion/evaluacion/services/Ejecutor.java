@@ -70,7 +70,7 @@ public class Ejecutor implements Tablero {
 	@Override
 	public int calcularPuntaje(int x, int y) {
 
-		//Auxiliares aux = new Auxiliares();
+		//Auxiliares aux = new Auxiliares(); aux.desplegarCarros().length
 
 		int estado = 0;
 		//Carro.estado = 0;
