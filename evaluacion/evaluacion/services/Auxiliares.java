@@ -32,7 +32,7 @@ public class Auxiliares {
 			}
 			while (salir ==0)
 			//Generar instancia de Kromi
-			//Agregar a carros mediante add.....
+		
 		
 			for (int i = 0; i<4; i++)
 			int salir=0;	
@@ -46,7 +46,7 @@ public class Auxiliares {
 						  
 			 while (salir ==0)
 			//Generar instancia de Caguano
-			//Agregar a carros mediante add.....
+
 	
 			for (int i = 0; i<9; i++)
 			int salir=0;	
@@ -57,7 +57,7 @@ public class Auxiliares {
 					salir=1;
 			while (salir ==0)	 
 				//Generar instancia de Trupalla
-				//Agregar a carros mediante add.....
+				
 			return null;
 		}
 
