@@ -50,7 +50,6 @@ public class Pantalla extends JFrame {
 	
 	static Ejecutor eje = new Ejecutor();
 	static Auxiliares aux = new Auxiliares();
-	static DiegoAux daux = new DiegoAux();
 	
 	char matrixJuego[][] = eje.getTablero();
 	private JButton btnDesplegar;
@@ -160,20 +159,9 @@ public class Pantalla extends JFrame {
 		btnDesplegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
-				eje.generarMatrix();
-				/*int cord[] = eje.generarCoordenadas("K");
-				if(eje.getTablero().length == '.') {
-					eje.setTablero(cord[0], cord[1], 'K');
-					eje.setTablero(cord[1], cord[1], 'K');
-					eje.setTablero(cord[2], cord[1], 'K');
-					int x = cord[0];
-					int y = cord[1];
-				}*/
-				
-				//char col = (char) (64 + cord[1]);
-				
-				
-				daux.desplegarCarros();
+				eje.generarMatrix();	
+						
+				//daux.desplegarCarros();
 			
 				//aux.desplegarCarros();  //K,C,T
 				
