@@ -22,8 +22,8 @@ public class Auxiliares {
 			do {
 			
 				if (Character.compare(eje.matrixJuego[x][y], '·') == 0 ? true : false) { //probar
-					if (eje.matrixJuego[x + 1][y] == '·') {
-						if (eje.matrixJuego[x + 2][y] == '·') {
+					if (Character.compare(eje.matrixJuego[x+1][y], '·') == 0 ? true : false) {
+						if (Character.compare(eje.matrixJuego[x+2][y], '·') == 0 ? true : false) {
 							eje.setTablero(x, y, 'K');
 							eje.setTablero(x + 1, y, 'K');
 							eje.setTablero(x + 2, y, 'K');
