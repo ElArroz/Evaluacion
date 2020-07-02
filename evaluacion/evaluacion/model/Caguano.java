@@ -5,14 +5,18 @@ public class Caguano extends Carro {
 
 	int alcanceTiro;
 	String colorConfeti;
+	String p1;
+	String p2;
 	
 	public Caguano() {
 	}
 
-	public Caguano(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int estado, int alcanceTiro, String colorConfeti) {
+	public Caguano(int cantidadOcupantes, String fechaIngreso, int estado, int alcanceTiro, String colorConfeti, String p1, String p2) {
 		super(cantidadOcupantes, fechaIngreso, estado);
 		this.alcanceTiro = alcanceTiro;
 		this.colorConfeti = colorConfeti;
+		this.p1 = p1;
+		this.p2 = p2;
 	}
 
 	public int getAlcanceTiro() {

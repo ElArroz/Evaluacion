@@ -4,7 +4,9 @@ public class Kromi extends Carro {
 	
 	int anioFabricacion;
 	String marca;
-	String p1, p2, p3;
+	String p1;
+	String p2;
+	String p3;
 	
 	public Kromi() {
 		// TODO Auto-generated constructor stub
