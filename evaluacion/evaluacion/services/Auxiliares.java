@@ -5,19 +5,25 @@ public class Auxiliares {
 	int x = 0;
 	int y = 0;
 	int sum=0;
-	boolean salir = false;
+	boolean salir = false, res;
 	//char array[][] =  new char[15][15];
 	Ejecutor eje = new Ejecutor();
 	
 	
 	
-	public String desplegarCarros () {
+	public String desplegarCarros() {
 		
 		// Generar instancia de Kromi
-		for (int i = 0; i < 3; i++) {
-			Generar("K");
-		
+		//for (int i = 0; i < 3; i++) {
+		Generar("K");
 		System.out.println(x+" "+y);
+		System.out.println(eje.matrixJuego[x][y]);
+		
+		//res=eje.revisar(x, y);
+		
+		//
+		//System.out.println(res);
+		/*
 					
 			do {
 			
@@ -36,7 +42,7 @@ public class Auxiliares {
 				}
 			} while (!salir);
 		}
-		
+	/*	
 		for (int i = 0; i < 5; i++) {
 			Generar("C");
 		
@@ -105,9 +111,10 @@ public class Auxiliares {
 			}
 		}   while (!salir);
 */
-		return null;
 
+		return null;
 	}
+
 
 	public int[] Generar(String txt) {
 		int arre[] = eje.generarCoordenadas(txt);

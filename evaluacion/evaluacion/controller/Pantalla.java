@@ -50,7 +50,7 @@ public class Pantalla extends JFrame {
 	static Ejecutor eje = new Ejecutor();
 	static Auxiliares aux = new Auxiliares();
 	
-	char matrixJuego[][] = eje.getTablero();
+	String matrixJuego[][] = eje.getTablero();
 	private JButton btnDesplegar;
 	private JButton btnMostrarTablero;
 	private JButton btnDisparar;
@@ -160,7 +160,7 @@ public class Pantalla extends JFrame {
 				tableroJuego.setVisible(true);
 				eje.generarMatrix();	
 						
-				//daux.desplegarCarros();
+				eje.desplegarCarros();
 			
 				//aux.desplegarCarros();  //K,C,T
 				
@@ -218,7 +218,7 @@ public class Pantalla extends JFrame {
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (option == JOptionPane.YES_OPTION) {
 					int cord[] = eje.generarCoordenadas("H");
-					eje.setTablero(cord[0], cord[1], 'H');
+					eje.setTablero(cord[0], cord[1], "H");
 					char col = (char) (64 + cord[1]);
 					int x = cord[1];
 					int y = cord[0];
