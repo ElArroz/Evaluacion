@@ -62,19 +62,19 @@ System.out.println(matrixJuego[i][j]);
 		
 	@Override
 	public int[] generarCoordenadas(String tipo) {
-		int fmax = 15, cmax = 16, ele = 3;
+		int cmax = 15, fmax = 15, ele = 3;
 		if (tipo.equalsIgnoreCase("k")) {
 			fmax = 13;
 			ele = 1;
 		} else if (tipo.equalsIgnoreCase("c")) {
-			cmax = 14;
+			cmax = 15;
 			ele = 2;
 		}
-
+		
+		int columna = ThreadLocalRandom.current().nextInt(1, cmax);
 		int fila = ThreadLocalRandom.current().nextInt(0, fmax);
-		int columna = ThreadLocalRandom.current().nextInt(0, cmax);
-
-		return new int[] { fila, columna, ele };
+		
+		return new int[] {fila, columna, ele };
 	}
 
 	
@@ -211,30 +211,80 @@ System.out.println(matrixJuego[i][j]);
 	
 	public String desplegarCarros() {
 		
-		for (int i=0; i<3;i++) {
+	for (int i=0; i<3;i++) {
+			
 			int arre[] = generarCoordenadas("k");
 			x = arre[0];
 			y = arre[1];
+						
 			do {				
-				if (tapa.equals(matrixJuego[x][y])) { 
+				if (tapa.equals(matrixJuego[x][y])) {
+					matrixJuego[x][y]="*";
 					if (tapa.equals(matrixJuego[x+1][y])) {
+						matrixJuego[x+1][y]="*";
 						if (tapa.equals(matrixJuego[x+2][y])) {
+							matrixJuego[x+2][y]="*";
 							setTablero(x, y, "K");
 							setTablero(x + 1, y, "K");
 							setTablero(x + 2, y, "K");
-							salir = true;
-							break;
+									salir = true;
+							
 							// Generer Instancia de kromi
 							// agrego al arreglo de carros (18)	
 						}
 					}
 				}
 			} while (!salir);
-			sum=sum+1;
-			System.out.println(sum);
+					
 		}
+		System.out.println("---Fin Kromis---");
 		
-		System.out.println(res);
+	for (int i=0; i<5;i++) {
+			
+			int arre[] = generarCoordenadas("C");
+			x = arre[0];
+			y = arre[1];
+						
+			do {				
+				if (tapa.equals(matrixJuego[x][y])) {
+					matrixJuego[x][y]="*";
+					if (tapa.equals(matrixJuego[x+1][y])) {
+						matrixJuego[x][y+1]="*";
+							setTablero(x, y, "C");
+							setTablero(x, y+1, "C");
+							salir = true;
+							
+							// Generer Instancia de Caguano
+							// agrego al arreglo de carros (18)	
+						}
+					}
+				
+			} while (!salir);
+					
+		}
+		System.out.println("---Fin Caguanos---");
+	
+	for (int i=0; i<10;i++) {
+			
+			int arre[] = generarCoordenadas("T");
+			x = arre[0];
+			y = arre[1];
+						
+			do {				
+				if (tapa.equals(matrixJuego[x][y])) {
+							setTablero(x, y, "T");
+							salir = true;
+						
+							// Generer Instancia de Trupallas
+							// agrego al arreglo de carros (18)	
+						}
+									
+			} while (!salir);
+					
+		}
+		System.out.println("---Fin Trupallas---");
+	
+			
 	return null;
 		
 	}
