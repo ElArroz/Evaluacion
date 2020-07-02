@@ -7,8 +7,7 @@ public class Carro {
 	public int cantidadOcupantes;
 	public String fechaIngreso;
 	public int estado;
-	//ArrayList<Huevo> recibeDisparos = new ArrayList();
-	
+		
 	public Carro() {
 		super();
 	}
@@ -18,21 +17,6 @@ public class Carro {
 		this.fechaIngreso = fechaIngreso;
 		this.estado = estado;
 	}
-	
-	/*public void recibirDisparo(Huevo recibeDisparos) {
-		
-		recibeDisparos.add(recibeDisparos);
-		
-	}
-	public void consultarDisparo() {
-		for (int i = 0; i < recibeDisparo.length; i++) {
-			
-		}
-		
-	}
-	public void hundirse() {
-	
-	}*/
 
 	public int getEstado() {
 		return estado;
