@@ -36,6 +36,45 @@ public class Auxiliares {
 				}
 			} while (!salir);
 		}
+		
+		for (int i = 0; i < 5; i++) {
+			Generar("C");
+		
+		System.out.println(x+" "+y);
+					
+			do {
+			
+				if (Character.compare(eje.matrixJuego[x][y], '·') == 0 ? true : false) { //probar
+					if (Character.compare(eje.matrixJuego[x][y+1], '·') == 0 ? true : false) {
+							eje.setTablero(x, y, 'C');
+							eje.setTablero(x, y+1, 'C');
+							salir = true;
+							break;
+							// Generer Instancia de kromi
+							// agrego al arreglo de carros (18)	
+						}
+					}
+				
+			} while (!salir);
+		}
+	for (int i = 0; i < 10; i++) {
+		Generar("T");
+	
+	System.out.println(x+" "+y);
+				
+		do {
+		
+			if (Character.compare(eje.matrixJuego[x][y], '·') == 0 ? true : false) { //probar
+						eje.setTablero(x, y, 'T');
+						salir = true;
+						break;
+						// Generer Instancia de kromi
+						// agrego al arreglo de carros (18)	
+					}
+				
+			
+		} while (!salir);
+	}
 /*
 		// Generar instancia de Caguano
 		for (int i = 0; i < b-1; i++) {
