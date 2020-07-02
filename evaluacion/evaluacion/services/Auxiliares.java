@@ -6,36 +6,22 @@ public class Auxiliares {
 	int y = 0;
 	int sum=0;
 	boolean salir = false;
+	//char array[][] =  new char[15][15];
 	Ejecutor eje = new Ejecutor();
 	
 	
 	
-	
-	public String desplegarCarros() {
-		char array[][] =  new char[15][15];
+	public String desplegarCarros () {
+		
 		// Generar instancia de Kromi
-	//	for (int i = 0; i < a-1; i++) {
-			//Generar("K");
-		//	eje.generarMatrix();
-		//System.out.println(x+" "+y);
+		for (int i = 0; i < 3; i++) {
+			Generar("K");
 		
-		for (int i=0; i<6; i++) {
-			for (int j=0; j<6; j++) {
-				
-				 array = eje.matrixJuego;
-				//System.out.println(array[i][j]);
-				eje.setTablero(x, y, 'K');
-			}
-		}
-			
-		
-			/*	
+		System.out.println(x+" "+y);
+					
 			do {
-			 sum=sum+1;
-				System.out.println(x+" "+y+" "+sum);
-				
-				
-				if (eje.matrixJuego[x][y] == '·') {
+			
+				if (Character.compare(eje.matrixJuego[x][y], '·') == 0 ? true : false) { //probar
 					if (eje.matrixJuego[x + 1][y] == '·') {
 						if (eje.matrixJuego[x + 2][y] == '·') {
 							eje.setTablero(x, y, 'K');
@@ -44,13 +30,13 @@ public class Auxiliares {
 							salir = true;
 							break;
 							// Generer Instancia de kromi
-
+							// agrego al arreglo de carros (18)	
 						}
 					}
 				}
 			} while (!salir);
 		}
-
+/*
 		// Generar instancia de Caguano
 		for (int i = 0; i < b-1; i++) {
 			Generar("C");

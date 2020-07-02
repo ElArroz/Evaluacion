@@ -25,7 +25,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import services.Auxiliares;
-import services.DiegoAux;
 import services.Ejecutor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

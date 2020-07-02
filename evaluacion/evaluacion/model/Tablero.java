@@ -26,7 +26,7 @@ public interface Tablero {
 	public int calcularPuntaje(int x, int y);
 	public int[] generarCoordenadas(String tipo);  	//Genera las coordenadas y usa parentesis porque es un método (averiguar) //carlos
 	public String verificarCoordenadas(String tiro);//Revisa que las coordenadas esten bien y devuelve int columna, int fila o un error
-	public String getMatrix();
+	//public String getMatrix();
 	
 }
 

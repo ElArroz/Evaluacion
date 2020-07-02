@@ -16,46 +16,82 @@ import model.Trupalla;
 public class Ejecutor implements Tablero {
 	int tam = 15; // tamaño tablero
 	char tapa = '·'; // caracter que tapa la celda //176
-	char matrixJuego[][] = new char[tam + 1][tam + 1];
+	char matrixJuego[][] = new char[tam + 1][tam + 1];  //Arreglo principal
 	int punto = 0;
-	String mensaje = "         ";
-
 	// ArrayList Carro listarCarro = new Arraylist[];
 
+	
+	@Override
+	public String generarMatrix() {
+
+		for (int i = 0; i < tam + 1; i++)
+			for (int j = 0; j < tam + 1; j++)
+				this.matrixJuego[i][j] = tapa;
+		return null;
+	}
+	
+	
+	@Override
+	public void mostrarMatrix() { 
+		DefaultTableModel model = (DefaultTableModel) Pantalla.tableroJuego.getModel(); //Jtable tableroJuego
+		model.setRowCount(tam);
+
+		for (int i = 0; i < tam; i++) {
+			Pantalla.tableroJuego.setValueAt(i + 1, i, 0); // Encabezados filas 1 a 15
+		}
+
+		for (int i = 0; i < tam; i++) {
+			for (int j = 1; j < tam + 1; j++) {
+
+				Pantalla.tableroJuego.setValueAt(matrixJuego[i][j], i, j);  //asignamos valores a Jtable tableroJuego
+			}
+		}
+	}
+	
+	
+	public void setTablero(int x, int y, char letra) {
+		this.matrixJuego[x][y] = letra;
+	}
+	
+
+		
+	@Override
+	public int[] generarCoordenadas(String tipo) {
+		int fmax = 15, cmax = 16, ele = 3;
+		if (tipo.equalsIgnoreCase("k")) {
+			fmax = 14;
+			ele = 1;
+		} else if (tipo.equalsIgnoreCase("c")) {
+			cmax = 14;
+			ele = 2;
+		}
+
+		int fila = ThreadLocalRandom.current().nextInt(0, fmax);
+		int columna = ThreadLocalRandom.current().nextInt(1, cmax);
+
+		return new int[] { fila, columna, ele };
+	}
+
+	
+
+	/// por implementar
+	
+	
 	@Override
 	public ArrayList<Carro> listarCarro() {
-
-		// Carro listarCarro[x][y] = new Carro[x][y];
-
-		/*
-		 * for(int i = 0; i< crearCarros; i++)
-		 * 
-		 * if(tablero[i][j] instanceof Kromi) {
-		 * 
-		 * } if(tablero[i][j] instanceof Caguano) {
-		 * 
-		 * } if(tablero[i][j] instanceof Trupalla) {
-		 * 
-		 * }
-		 */
-
 		return null;
 
 	}
 
 	@Override
 	public ArrayList<Huevo> listarHuevo() {
-		ArrayList<Huevo> huevo = new ArrayList<>();
-		huevo.addAll(huevo);
-		return huevo;
+		return null;
 
 	}
 
 	@Override
 	public String crearCarro(String crearCarro) {
-		ArrayList<String> crearCarros = new ArrayList<String>();
-		crearCarros.addAll(crearCarros);
-		return crearCarro;
+				return null;
 
 	}
 
@@ -116,54 +152,7 @@ public class Ejecutor implements Tablero {
 		return punto;
 	}
 
-	@Override
-	public void mostrarMatrix() { // TODO Averiguar como usar este metodo desde Ejecutor
-
-		DefaultTableModel model = (DefaultTableModel) Pantalla.tableroJuego.getModel();
-		model.setRowCount(tam);
-
-		for (int i = 0; i < tam; i++) {
-			Pantalla.tableroJuego.setValueAt(i + 1, i, 0); // Encabezados filas 1 a 15
-		}
-
-		for (int i = 0; i < tam; i++) {
-			for (int j = 1; j < tam + 1; j++) {
-
-				Pantalla.tableroJuego.setValueAt(matrixJuego[i][j], i, j);
-			}
-		}
-	}
-
-	@Override
-	public int[] generarCoordenadas(String tipo) {
-		int fmax = 15, cmax = 16, ele = 3;
-		if (tipo.equalsIgnoreCase("k")) {
-			fmax = 14;
-			ele = 1;
-		} else if (tipo.equalsIgnoreCase("c")) {
-			cmax = 14;
-			ele = 2;
-		}
-
-		int fila = ThreadLocalRandom.current().nextInt(0, fmax);
-		int columna = ThreadLocalRandom.current().nextInt(1, cmax);
-
-		return new int[] { fila, columna, ele };
-	}
-
-	@Override
-	public String generarMatrix() {
-
-		for (int i = 0; i < tam + 1; i++)
-			for (int j = 0; j < tam + 1; j++)
-				this.matrixJuego[i][j] = tapa;
-
-		return null;
-	}
-
-	public void setTablero(int x, int y, char letra) {
-		this.matrixJuego[x][y] = letra;
-	}
+	
 
 	@Override
 	public String verificarCoordenadas(String tiro) {
@@ -189,25 +178,21 @@ public class Ejecutor implements Tablero {
 		return null;
 	}
 
-	/*
-	 * @Override public ArrayList<Caguano> listarCaguano() { // TODO Auto-generated
-	 * method stub return null; }
-	 * 
-	 * @Override public ArrayList<Kromi> listarKromi() { // TODO Auto-generated
-	 * method stub return null; }
-	 * 
-	 * @Override public ArrayList<Trupalla> listarTrupalla() { // TODO
-	 * Auto-generated method stub return null; }
-	 */
+	
+	public char[][] getTablero() {  // dudoso ?
+		return this.matrixJuego;
+	}
+	
+	
+	
 
+	/*
 	@Override
 	public String getMatrix() {
 		mostrarMatrix();
 		return this.mensaje;
 	}
-
-	public char[][] getTablero() {
-		return this.matrixJuego;
-	}
+*/
+	
 
 }

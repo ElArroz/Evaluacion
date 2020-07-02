@@ -6,8 +6,6 @@ public class Carro {
 	
 	public int cantidadOcupantes;
 	public String fechaIngreso;
-	public int fila;
-	public int columna;
 	public int estado;
 	//ArrayList<Huevo> recibeDisparos = new ArrayList();
 	
@@ -15,11 +13,9 @@ public class Carro {
 		super();
 	}
 
-	public Carro(int cantidadOcupantes, String fechaIngreso, int fila, int columna, int estado) {
+	public Carro(int cantidadOcupantes, String fechaIngreso, int estado) {
 		this.cantidadOcupantes = cantidadOcupantes;
 		this.fechaIngreso = fechaIngreso;
-		this.fila = fila;
-		this.columna = columna;
 		this.estado = estado;
 	}
 	
@@ -62,26 +58,10 @@ public class Carro {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-	public int getFila() {
-		return fila;
-	}
-
-	public void setFila(int fila) {
-		this.fila = fila;
-	}
-
-	public int getColumna() {
-		return columna;
-	}
-
-	public void setColumna(int columna) {
-		this.columna = columna;
-	}
 
 	@Override
 	public String toString() {
-		return "Carro [cantidadOcupantes=" + cantidadOcupantes + ", fechaIngreso=" + fechaIngreso + ", fila=" + fila
-				+ ", columna=" + columna + ", estado=" + estado + "]";
+		return "Carro [cantidadOcupantes=" + cantidadOcupantes + ", fechaIngreso=" + fechaIngreso + ", estado=" + estado + "]";
 	}
 
 	
