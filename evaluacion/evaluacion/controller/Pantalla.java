@@ -23,6 +23,8 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+
+import model.Kromi;
 import services.Ejecutor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -157,18 +159,10 @@ public class Pantalla extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
 				eje.generarMatrix();	
-						
+				
 				eje.desplegarCarros();
-			
-				//aux.desplegarCarros();  //K,C,T
+						
 				
-				
-				
-				/*
-				eje.setTablero(0, 5, 'K');
-				eje.setTablero(1, 5, 'K');
-				eje.setTablero(2, 5, 'K');
-				 */
 				
 				mostrarMatriz();
 			}
@@ -240,7 +234,8 @@ public class Pantalla extends JFrame {
 		ventana.add(btnFinPartida);
 		btnFinPartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO finPardida
+				eje.getCarros().forEach(carro -> System.out.println( "    " + carro));
+				
 			}
 		});
 

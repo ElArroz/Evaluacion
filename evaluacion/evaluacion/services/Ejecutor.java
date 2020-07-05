@@ -3,6 +3,7 @@ package services;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JTable;
@@ -28,9 +29,10 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	int punto = 0;
 	Carro carro = new Carro();
 	Huevo huevo = new Huevo();
-	ArrayList<Huevo> listarHuevo = new ArrayList<Huevo>();
-	ArrayList<Carro> listarCarro = new ArrayList<Carro>();
-	DefaultTableModel model = (DefaultTableModel) Pantalla.tableroJuego.getModel(); // Jtable tableroJuego
+	private List <Carro> carros;
+	private List <Huevo> huevos;
+	Auxiliar aux = new Auxiliar();
+	
 	
 	@Override
 	public String generarMatrix() {
@@ -45,6 +47,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 
 	@Override
 	public void mostrarMatrix() {
+		DefaultTableModel model = (DefaultTableModel) Pantalla.tableroJuego.getModel(); // Jtable tableroJuego
 		model.setRowCount(tam);
 
 		for (int i = 0; i < tam; i++) {
@@ -79,26 +82,6 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 		int fila = ThreadLocalRandom.current().nextInt(0, fmax);
 
 		return new int[] { fila, columna, ele };
-	}
-
-	@Override
-	public ArrayList<Carro> listarCarro() {
-		for (int i = 0; i < matrixJuego.length; i++) {
-			listarCarro.add(carro);
-			System.out.println("Carros Ingresado" + listarCarro.size());
-		}
-		return null;
-
-	}
-
-	@Override
-	public ArrayList<Huevo> listarHuevo() {
-		for (int i = 0; i < matrixJuego.length; i++) {
-			listarCarro.add(carro);
-			System.out.println("Carros Ingresado" + listarCarro.size());
-		}
-		return null;
-
 	}
 
 	@Override
@@ -157,23 +140,26 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	
 	@Override
 	public String desplegarCarros() {
+		this.carros=new ArrayList<>();
 
 		for (int i = 0; i < 3; i++) {
 			int arre[] = generarCoordenadas("K");
 			x = arre[0]; y = arre[1];
 			do {
 				if (tapa.equals(matrixJuego[x][y]) && tapa.equals(matrixJuego[x + 1][y]) && tapa.equals(matrixJuego[x + 2][y])) {
-					
-				//	model.setValueAt(aValue, row, column);
-				
-					
+						
 						setTablero(x, y, "K");
 						setTablero(x + 1, y, "K");
 						setTablero(x + 2, y, "K");
-							salir = true;
-
-							// Generer Instancia de kromi
-							// agrego al arreglo de carros (18)
+						salir = true;
+						
+						Kromi kromi=new Kromi(); // Generer Instancia de kromi
+						kromi.setAnioFabricacion(aux.RandomFabricacion());
+						kromi.setMarca(aux.RandomMarca());
+						kromi.setFechaIngreso(aux.RandomFecha()+(kromi.getAnioFabricacion()+1));
+						
+						
+						this.carros.add(kromi);	// agrego al arreglo de carros 
 					}
 			} while (!salir);
 		}
@@ -187,8 +173,8 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 						setTablero(x, y, "C");
 						setTablero(x, y + 1, "C");
 						salir = true;
-						// Generer Instancia de Caguano
-						// agrego al arreglo de carros (18)
+					//	Caguano caguano=new Caguano(); // Generer Instancia de Caguano
+					//	this.carros.add(kromi);	// agrego al arreglo de carros 
 				}
 
 			} while (!salir);
@@ -217,17 +203,16 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	}
 
 	
-/*
-	public boolean revisar(int x, int y) {
-		System.out.println(x + " " + y);
-		System.out.println(matrixJuego[x][y]);
-		if (tapa.equals(matrixJuego[x][y])) { // equalsIgnoreCase("k")
-			return true;
-
-		} else {
-
-			return false;
-		}
+	@Override
+	public List<Carro> getCarros() {
+		return this.carros;
 	}
-*/
+
+	
+	@Override
+	public List<Huevo> getHuevos() {
+		return this.huevos;
+	}
+
+
 	}
