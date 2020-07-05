@@ -23,8 +23,6 @@ import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
-
-import services.Auxiliares;
 import services.Ejecutor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -48,7 +46,7 @@ public class Pantalla extends JFrame {
 	int puntos = 0;
 	
 	static Ejecutor eje = new Ejecutor();
-	static Auxiliares aux = new Auxiliares();
+	//static Auxiliares aux = new Auxiliares();
 	
 	String matrixJuego[][] = eje.getTablero();
 	private JButton btnDesplegar;

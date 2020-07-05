@@ -16,9 +16,7 @@ public interface Tablero {
 	
 	public String crearCarro(String crearCarro); 					//revisar
 	
-	public String desplegarKromi(); 					//Nuevo revisar Victor
-	public String desplegarCaguano(); 					//Nuevo revisar Victor
-	public String desplegarTrupalla(); 					//Nuevo revisar Victor
+	public String desplegarCarros(); 
 	
 	public boolean lanzarHuevo(int x, int y); 		//se cambia a boolean para verificar impacto
 	public void mostrarMatrix();
@@ -26,6 +24,8 @@ public interface Tablero {
 	public int calcularPuntaje(int x, int y);
 	public int[] generarCoordenadas(String tipo);  	//Genera las coordenadas y usa parentesis porque es un método (averiguar) //carlos
 	public String verificarCoordenadas(String tiro);//Revisa que las coordenadas esten bien y devuelve int columna, int fila o un error
+	public void setTablero(int x, int y, String letra);
+	
 	//public String getMatrix();
 	
 }
