@@ -36,7 +36,6 @@ public class Main extends JFrame {
 
 
 	
-	
 	public Main() {
 		setTitle("[ Batalla por Oscurilandia ]");
 		setAlwaysOnTop(true);
@@ -49,11 +48,7 @@ public class Main extends JFrame {
 		inicio.setBackground(Color.DARK_GRAY);
 		inicio.setBorder(new EmptyBorder(4, 4, 4, 4));
 		setContentPane(inicio);
-	
-		
-		
-		
-		
+			
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Main.class.getResource("/img/fondoHuevos.png")));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);

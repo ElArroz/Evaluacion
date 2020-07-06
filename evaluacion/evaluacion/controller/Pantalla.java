@@ -286,7 +286,11 @@ public class Pantalla extends JFrame {
 		ventana.add(btnFinPartida);
 		btnFinPartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+			
+				int option = JOptionPane.showConfirmDialog(null, "Vas a finalizar la partida: ¿Estas seguro?", "FINALIZAR PARTIDA",
+						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+				if (option == JOptionPane.YES_OPTION) {
+				 					
 				for (int i = 0; i < tam; i++) {
 					for (int j = 1; j < tam + 1; j++) {
 						tableroJuego.setValueAt(eje.getMatrixJuego()[i][j], i, j);
@@ -294,6 +298,18 @@ public class Pantalla extends JFrame {
 				}
 				eje.getCarros().forEach(carro -> System.out.println( "    " + carro));
 				huevos.forEach(huevo -> System.out.println( "    " + huevo));
+				
+				Main main = new Main();
+				main.setVisible(true);
+				main.setSize(560,450);
+				setLocationRelativeTo(null);
+				ventana.setVisible(false);
+				dispose();
+				
+			
+				}else {
+					
+				}
 			}
 		});
 
