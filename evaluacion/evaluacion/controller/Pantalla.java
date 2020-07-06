@@ -305,7 +305,7 @@ public class Pantalla extends JFrame {
 				setLocationRelativeTo(null);
 				ventana.setVisible(false);
 				dispose();
-				
+	
 			
 				}else {
 					
