@@ -11,6 +11,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
+import org.omg.CORBA.portable.ValueBase;
+
 import controller.Pantalla;
 import model.Caguano;
 import model.Carro;
@@ -25,8 +27,9 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	int out = 0;
 	boolean res;
 	String tapa = "-"; // caracter que tapa la celda 
-	String matrixJuego[][] = new String[tam + 1][tam + 1]; // Arreglo principal
-	int punto = 0;
+	private String matrixJuego[][] = new String[tam + 1][tam + 1]; // Arreglo principal
+	String hit=null;
+	int pto = 0,puntos=0;
 	Carro carro = new Carro();
 	Huevo huevo = new Huevo();
 	private List <Carro> carros;
@@ -39,7 +42,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 
 		for (int i = 0; i < tam + 1; i++) {
 			for (int j = 0; j < tam + 1; j++) {
-				this.matrixJuego[i][j] = tapa;
+				this.getMatrixJuego()[i][j] = tapa;
 			}
 		}
 		return null;
@@ -56,15 +59,15 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 
 		for (int i = 0; i < tam; i++) {
 			for (int j = 1; j < tam + 1; j++) {
-				System.out.println(matrixJuego[i][j]);
-				Pantalla.tableroJuego.setValueAt(matrixJuego[i][j], i, j); // asignamos valores a Jtable tableroJuego
+				System.out.println(getMatrixJuego()[i][j]);
+				Pantalla.tableroJuego.setValueAt(getMatrixJuego()[i][j], i, j); // asignamos valores a Jtable tableroJuego
 			}
 		}
 	}
 	
 	@Override
 	public void setTablero(int x, int y, String letra) {
-		this.matrixJuego[x][y] = letra;
+		this.getMatrixJuego()[x][y] = letra;
 	}
 
 	@Override
@@ -85,19 +88,46 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	}
 
 	@Override
-	public String crearCarro(String crearCarro) {
-		return null;
+	public String convertirPos(int x, int y) {
+		char col = (char) (64 + y);
+		String pos= String.valueOf(col)+(x+1);
+		return pos;
 
 	}
 
 	@Override
-	public boolean lanzarHuevo(int x, int y) { // con respecto al impacto (si le pego)
-		if (matrixJuego[x][y] == ".")
-			return false;
-		else
-			return true;
+	public String lanzarHuevo(int x, int y) { 
+		pto=0;	
+		switch (getMatrixJuego()[x][y]) {
+			case "K":
+				hit="(K)";
+				pto=3;
+				break;
+				
+			case "C":
+				hit="(C)";
+				pto=2;
+				break;
+				
+			case "T":
+				hit="(T)";
+				pto=1;
+				break;
+				
+			case "-":
+				hit="H";
+				break;
+	
+			default:
+				break;
+		}
+			puntos +=pto;
+			String coorde=convertirPos(x,y);
+			matrixJuego[x][y]=hit;	
+			System.out.println("Resultado["+hit+"] en Cordenadas: " + coorde + " Puntos+"+pto);
+		return hit;
 	}
-
+	
 	@Override
 	public int calcularPuntaje(int x, int y) {
 
@@ -126,16 +156,12 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 		 * 
 		 * } } break; }
 		 */
-		return punto;
+		return puntos;
 	}
 
 	@Override
 	public String verificarCoordenadas(String tiro) {
 		return null;
-	}
-	
-	public String[][] getTablero() { // dudoso ?
-		return this.matrixJuego;
 	}
 	
 	@Override
@@ -145,7 +171,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 			do {
 				int arre[] = generarCoordenadas("K");
 				x = arre[0]; y = arre[1];
-				if (tapa.equals(matrixJuego[x][y]) && tapa.equals(matrixJuego[x + 1][y]) && tapa.equals(matrixJuego[x + 2][y])) {
+				if (tapa.equals(getMatrixJuego()[x][y]) && tapa.equals(getMatrixJuego()[x + 1][y]) && tapa.equals(getMatrixJuego()[x + 2][y])) {
 						setTablero(x, y, "K");
 						setTablero(x + 1, y, "K");
 						setTablero(x + 2, y, "K");
@@ -165,7 +191,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 			do {
 				int arre[] = generarCoordenadas("C");
 				x = arre[0]; y = arre[1];
-				if (tapa.equals(matrixJuego[x][y]) &&tapa.equals(matrixJuego[x + 1][y])) {
+				if (tapa.equals(getMatrixJuego()[x][y]) &&tapa.equals(getMatrixJuego()[x + 1][y])) {
 						setTablero(x, y, "C");
 						setTablero(x, y + 1, "C");
 						Caguano caguano=new Caguano(); 	// Generer Instancia de Caguano
@@ -185,7 +211,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 			do {
 				int arre[] = generarCoordenadas("T");
 				x = arre[0]; y = arre[1];
-				if (tapa.equals(matrixJuego[x][y])) {
+				if (tapa.equals(getMatrixJuego()[x][y])) {
 					setTablero(x, y, "T");
 					Trupalla trupalla=new Trupalla();	// Generer Instancia de Trupallas
 						trupalla.setNivelArmadura(ThreadLocalRandom.current().nextInt(1, 6));
@@ -203,18 +229,31 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 		out=0;
 		return null;
 	}
-
 	
 	@Override
 	public List<Carro> getCarros() {
 		return this.carros;
 	}
 
-	
 	@Override
 	public List<Huevo> getHuevos() {
 		return this.huevos;
 	}
 
+	public String[][] getMatrixJuego() {
+		return matrixJuego;
+	}
 
+	public void setMatrixJuego(String matrixJuego[][]) {
+		this.matrixJuego = matrixJuego;
+	}
+
+	public void setPto(int pto) {
+		this.pto=pto;
+	}
+	
+	public int getPto() {
+		return pto;
+	}
+	
 	}
