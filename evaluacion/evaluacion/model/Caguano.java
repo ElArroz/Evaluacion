@@ -18,7 +18,6 @@ public class Caguano extends Carro {
 		this.p2 = p2;
 	}
 	
-
 	public String getP1() {
 		return p1;
 	}
@@ -53,8 +52,8 @@ public class Caguano extends Carro {
 
 	@Override
 	public String toString() {
-		return "Caguano [Alcance: " + alcanceTiro + ", Confeti: " + colorConfeti + "Pos : "+ p1 + ", " + p2 +
-				", Ocupantes: " + cantidadOcupantes + ", Ingreso: " + fechaIngreso + ", Estado: " + danio
+		return "Caguano  [Alcance: " + alcanceTiro + " Confeti: " + colorConfeti + " Pos: "+ p1 + "-" + p2 +
+				" Ocupantes: " + cantidadOcupantes + " Ingreso: " + fechaIngreso + " Estado: " + danio
 				+ "]";
 	}
 	

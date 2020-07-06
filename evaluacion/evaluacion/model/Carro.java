@@ -14,6 +14,7 @@ public class Carro {
 		this.cantidadOcupantes = cantidadOcupantes;
 		this.fechaIngreso = fechaIngreso;
 		this.estado = estado;
+		this.danio = danio;
 	}
 
 	public int getEstado() {

@@ -18,7 +18,7 @@ public class Kromi extends Carro {
 		this.p1 = p1;
 		this.p2 = p2;
 		this.p3 = p3;
-	}
+		}
 
 	public String getP1() {
 		return p1;
@@ -62,8 +62,8 @@ public class Kromi extends Carro {
 
 	@Override
 	public String toString() {
-		return "Kromi [Fab: " + anioFabricacion + ", Marca: " + marca + ", Pos : "+ p1 + ", " + p2 + ", "
-				+ p3 + ", Ocupantes: " + cantidadOcupantes + ", Ingreso :" + fechaIngreso + ", Estado: "
+		return "Kromi    [Fab: " + anioFabricacion + ", Marca: " + marca + " Pos: "+ p1 + "-" + p2 + "-"
+				+ p3 + " Ocupantes: " + cantidadOcupantes + " Ingreso :" + fechaIngreso + " Estado: "
 				+ danio + "]";
 	}
 

@@ -22,8 +22,8 @@ import model.Trupalla;
 public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	int tam = 15; // tamaño tablero
 	int x, y; // coordenadas
-	int sum = 0;
-	boolean res, salir;
+	int out = 0;
+	boolean res;
 	String tapa = "-"; // caracter que tapa la celda 
 	String matrixJuego[][] = new String[tam + 1][tam + 1]; // Arreglo principal
 	int punto = 0;
@@ -141,64 +141,66 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	@Override
 	public String desplegarCarros() {
 		this.carros=new ArrayList<>();
-
-		for (int i = 0; i < 3; i++) {
-			int arre[] = generarCoordenadas("K");
-			x = arre[0]; y = arre[1];
+			
 			do {
+				int arre[] = generarCoordenadas("K");
+				x = arre[0]; y = arre[1];
 				if (tapa.equals(matrixJuego[x][y]) && tapa.equals(matrixJuego[x + 1][y]) && tapa.equals(matrixJuego[x + 2][y])) {
-						
 						setTablero(x, y, "K");
 						setTablero(x + 1, y, "K");
 						setTablero(x + 2, y, "K");
-						salir = true;
-						
 						Kromi kromi=new Kromi(); // Generer Instancia de kromi
-						kromi.setAnioFabricacion(aux.RandomFabricacion());
-						kromi.setMarca(aux.RandomMarca());
-						kromi.setFechaIngreso(aux.RandomFecha()+(kromi.getAnioFabricacion()+1));
-						
-						
-						this.carros.add(kromi);	// agrego al arreglo de carros 
+							kromi.setAnioFabricacion(aux.RandomFabricacion());
+							kromi.setMarca(aux.RandomMarca());
+							kromi.setFechaIngreso(aux.RandomFecha()+(kromi.getAnioFabricacion()+1));
+							kromi.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(1, 10));
+							kromi.setDanio("SinDaño");											
+						this.carros.add(kromi);	// agrego al arreglo de carros
+						out = out+1;
 					}
-			} while (!salir);
-		}
-		System.out.println("---Fin Kromis (3)---");
-
-		for (int i = 0; i < 5; i++) {
-			int arre[] = generarCoordenadas("C");
-			x = arre[0]; y = arre[1];
+			} while (out<3);
+			
+		System.out.println("Kromis Listas ("+out+")");
+		out=0;
 			do {
+				int arre[] = generarCoordenadas("C");
+				x = arre[0]; y = arre[1];
 				if (tapa.equals(matrixJuego[x][y]) &&tapa.equals(matrixJuego[x + 1][y])) {
 						setTablero(x, y, "C");
 						setTablero(x, y + 1, "C");
-						salir = true;
-					//	Caguano caguano=new Caguano(); // Generer Instancia de Caguano
-					//	this.carros.add(kromi);	// agrego al arreglo de carros 
+						Caguano caguano=new Caguano(); 	// Generer Instancia de Caguano
+							caguano.setAlcanceTiro(ThreadLocalRandom.current().nextInt(2, 30));
+							caguano.setColorConfeti(aux.RandomColor());
+							caguano.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(2, 4));
+							caguano.setFechaIngreso(aux.RandomFecha()+aux.RandomFabricacion());
+							caguano.setDanio("SinDaño");
+						this.carros.add(caguano);		// agrego al arreglo de carros 
+						out = out+1;
 				}
 
-			} while (!salir);
-
-		}
-		System.out.println("---Fin Caguanos (5)---");
-
-		for (int i = 0; i < 10; i++) {
-			int arre[] = generarCoordenadas("T");
-			x = arre[0]; y = arre[1];
+			} while (out<5);
+				
+		System.out.println("Caguanos Listos ("+out+")");
+		out=0;	
 			do {
+				int arre[] = generarCoordenadas("T");
+				x = arre[0]; y = arre[1];
 				if (tapa.equals(matrixJuego[x][y])) {
 					setTablero(x, y, "T");
-					salir = true;
-
-					// Generer Instancia de Trupallas
-					// agrego al arreglo de carros (18)
+					Trupalla trupalla=new Trupalla();	// Generer Instancia de Trupallas
+						trupalla.setNivelArmadura(ThreadLocalRandom.current().nextInt(1, 6));
+						
+						trupalla.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(1, 4));
+						trupalla.setFechaIngreso(aux.RandomFecha()+aux.RandomFabricacion());
+						trupalla.setDanio("SinDaño");
+					this.carros.add(trupalla);			// agrego al arreglo de carros (18)
+					out = out+1;
 				}
 
-			} while (!salir);
+			} while (out<10);
 
-		}
-		System.out.println("---Fin Trupallas (10)---");
-
+		System.out.println("Trupallas Listas ("+out+")");
+		out=0;
 		return null;
 	}
 

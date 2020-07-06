@@ -12,7 +12,7 @@ public class Trupalla extends Carro {
 	}
 
 	public Trupalla(int cantidadOcupantes, String fechaIngreso, int estado, int nivelArmadura, String nombreManipulador, String p1, String danio) {
-		super(cantidadOcupantes, fechaIngreso, 1, danio);
+		super(cantidadOcupantes, fechaIngreso, 1, "SinDaño");
 		this.nivelArmadura = nivelArmadura;
 		this.nombreManipulador = nombreManipulador;
 		this.p1 = p1;
@@ -45,8 +45,8 @@ public class Trupalla extends Carro {
 
 	@Override
 	public String toString() {
-		return "Trupalla [Armadura: " + nivelArmadura + ", Chofer=" + nombreManipulador + ", Ubicación: " + p1
-				+ ", Ocupantes: " + cantidadOcupantes + ", Ingreso: " + fechaIngreso + ", Estado: " + danio
+		return "Trupalla [Armadura: " + nivelArmadura + " Chofer: " + nombreManipulador + " Pos: " + p1
+				+ " Ocupantes: " + cantidadOcupantes + " Ingreso: " + fechaIngreso + " Estado: " + danio
 				+ "]";
 	}
 
