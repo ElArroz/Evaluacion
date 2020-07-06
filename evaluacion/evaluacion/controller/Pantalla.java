@@ -219,6 +219,7 @@ public class Pantalla extends JFrame {
 
 //Boton MostrarTablero
 		btnMostrarTablero = new JButton("Mostrar");
+		btnMostrarTablero.setFont(new Font("Arial Narrow", Font.PLAIN, 12));
 		btnMostrarTablero.setBounds(367, 299, 73, 50);
 		btnMostrarTablero.setVisible(false);
 		ventana.add(btnMostrarTablero);
@@ -253,7 +254,7 @@ public class Pantalla extends JFrame {
 				
 					local[x][y]=eje.lanzarHuevo(x,y);
 					
-				coorde=eje.convertirPos(x, y);
+					coorde=eje.convertirPos(x, y);
 					
 																					
 				} else {
@@ -279,6 +280,7 @@ public class Pantalla extends JFrame {
 
 //Boton FinPartida
 		btnFinPartida = new JButton("Finalizar");
+		btnFinPartida.setFont(new Font("Arial Narrow", Font.PLAIN, 12));
 		btnFinPartida.setBounds(459, 299, 73, 50);
 		btnFinPartida.setVisible(false);
 		ventana.add(btnFinPartida);

@@ -26,7 +26,8 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	int x, y; // coordenadas
 	int out = 0;
 	boolean res;
-	String tapa = "-"; // caracter que tapa la celda 
+	String tapa = "-"; // caracter que tapa la celda
+	String coorde="";
 	private String matrixJuego[][] = new String[tam + 1][tam + 1]; // Arreglo principal
 	String hit=null;
 	int pto = 0,puntos=0;
@@ -122,7 +123,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 				break;
 		}
 			puntos +=pto;
-			String coorde=convertirPos(x,y);
+			coorde=convertirPos(x,y);
 			matrixJuego[x][y]=hit;	
 			System.out.println("Resultado["+hit+"] en Cordenadas: " + coorde + " Puntos: +"+pto);
 		return hit;
@@ -180,7 +181,10 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 							kromi.setMarca(aux.RandomMarca());
 							kromi.setFechaIngreso(aux.RandomFecha()+(kromi.getAnioFabricacion()+1));
 							kromi.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(1, 10));
-							kromi.setDanio("SinDaño");											
+							kromi.setDanio("SinDaño");
+							kromi.setP1(convertirPos(x,y));
+							kromi.setP2(convertirPos(x+1,y));
+							kromi.setP3(convertirPos(x+2,y));
 						this.carros.add(kromi);	// agrego al arreglo de carros
 						out = out+1;
 					}
@@ -200,6 +204,8 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 							caguano.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(2, 4));
 							caguano.setFechaIngreso(aux.RandomFecha()+aux.RandomFabricacion());
 							caguano.setDanio("SinDaño");
+							caguano.setP1(convertirPos(x,y));
+							caguano.setP1(convertirPos(x,y+1));
 						this.carros.add(caguano);		// agrego al arreglo de carros 
 						out = out+1;
 				}
@@ -219,6 +225,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 						trupalla.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(1, 4));
 						trupalla.setFechaIngreso(aux.RandomFecha()+aux.RandomFabricacion());
 						trupalla.setDanio("SinDaño");
+						trupalla.setP1(convertirPos(x,y));
 					this.carros.add(trupalla);			// agrego al arreglo de carros (18)
 					out = out+1;
 				}
