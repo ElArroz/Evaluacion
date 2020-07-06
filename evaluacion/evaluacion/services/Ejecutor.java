@@ -189,7 +189,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 					setTablero(x, y, "T");
 					Trupalla trupalla=new Trupalla();	// Generer Instancia de Trupallas
 						trupalla.setNivelArmadura(ThreadLocalRandom.current().nextInt(1, 6));
-						
+						trupalla.setNombreManipulador(aux.RandomNombre());
 						trupalla.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(1, 4));
 						trupalla.setFechaIngreso(aux.RandomFecha()+aux.RandomFabricacion());
 						trupalla.setDanio("SinDaño");

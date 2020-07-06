@@ -31,10 +31,20 @@ public class Auxiliar {
 		return (dia+"/"+mes+"/");
 	}
 	
-	public String RandomColor() {
+	public String RandomNombre() {
+		
+		String[] nombre= {"Cesar Noso","Benito Camelo","Ema Amado","Igor Dito","Helena Nito","Juanca Gador","lali Cuadora","Karen Latada","Omar Ciano",
+				"Aquiles Castro","Susana Oria","Elvio Lao","Aldo Lorido","Debora Melo","Calitos Tado","Elsa Lames","Edgar Gajo"};
+		int pos = ThreadLocalRandom.current().nextInt(0,nombre.length);
+		return nombre [pos];
+	}
+	
+public String RandomColor() {
 		
 		String[] color= {"Amarillo","Azul","Verde","Rojo","Morado","Multicolor","Gris","Violeta"};
 		int pos = ThreadLocalRandom.current().nextInt(0,color.length);
 		return color[pos];
 	}
+	
+	
 }
