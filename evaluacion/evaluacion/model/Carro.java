@@ -1,18 +1,16 @@
 package model;
 
-//import java.util.ArrayList;
-
 public class Carro {
 	
 	public int cantidadOcupantes;
 	public String fechaIngreso;
 	public int estado;
+	public String danio;
 		
 	public Carro() {
-		super();
-	}
+		}
 
-	public Carro(int cantidadOcupantes, String fechaIngreso, int estado) {
+	public Carro(int cantidadOcupantes, String fechaIngreso, int estado, String danio) {
 		this.cantidadOcupantes = cantidadOcupantes;
 		this.fechaIngreso = fechaIngreso;
 		this.estado = estado;
@@ -26,6 +24,14 @@ public class Carro {
 		this.estado = estado;
 	}
 
+	public String getDanio() {
+		return danio;
+	}
+	
+	public void setDanio(String danio) {
+		this.danio = danio;
+	}
+	
 	public int getCantidadOcupantes() {
 		return cantidadOcupantes;
 	}
@@ -42,15 +48,10 @@ public class Carro {
 		this.fechaIngreso = fechaIngreso;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Carro [cantidadOcupantes=" + cantidadOcupantes + ", fechaIngreso=" + fechaIngreso + ", estado=" + estado + "]";
+		return "Carro [cantidadOcupantes=" + cantidadOcupantes + ", fechaIngreso=" + fechaIngreso + ", daño=" + danio + "]";
 	}
 
-	
-	
-	
-	
 }
 

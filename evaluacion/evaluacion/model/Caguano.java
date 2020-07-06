@@ -1,10 +1,7 @@
 package model;
 
-
 public class Caguano extends Carro {
-	
-	//protected static final int ESTADO = 2;
-
+		
 	int alcanceTiro;
 	String colorConfeti;
 	String p1;
@@ -13,8 +10,8 @@ public class Caguano extends Carro {
 	public Caguano() {
 	}
 
-	public Caguano(int cantidadOcupantes, String fechaIngreso, int estado, int alcanceTiro, String colorConfeti, String p1, String p2) {
-		super(cantidadOcupantes, fechaIngreso, 2);
+	public Caguano(int cantidadOcupantes, String fechaIngreso, int estado, int alcanceTiro, String colorConfeti, String p1, String p2, String danio) {
+		super(cantidadOcupantes, fechaIngreso, 2, danio);
 		this.alcanceTiro = alcanceTiro;
 		this.colorConfeti = colorConfeti;
 		this.p1 = p1;
@@ -56,7 +53,9 @@ public class Caguano extends Carro {
 
 	@Override
 	public String toString() {
-		return "Caguano [alcanceTiro=" + alcanceTiro + ", colorConfeti=" + colorConfeti + "]";
+		return "Caguano [Alcance: " + alcanceTiro + ", Confeti: " + colorConfeti + "Pos : "+ p1 + ", " + p2 +
+				", Ocupantes: " + cantidadOcupantes + ", Ingreso: " + fechaIngreso + ", Estado: " + danio
+				+ "]";
 	}
 	
 }

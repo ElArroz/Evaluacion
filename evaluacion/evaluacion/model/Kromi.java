@@ -1,9 +1,7 @@
 package model;
 
 public class Kromi extends Carro {
-	
-	//protected static final int ESTADO = 3;
-	
+			
 	int anioFabricacion;
 	String marca;
 	String p1;
@@ -11,11 +9,10 @@ public class Kromi extends Carro {
 	String p3;
 	
 	public Kromi() {
-		// TODO Auto-generated constructor stub
-	}
+		}
 
-	public Kromi(int cantidadOcupantes, String fechaIngreso, String p1, String p2, String p3,  int estado, int anioFabricacion, String marca) {
-		super(cantidadOcupantes, fechaIngreso, 3);
+	public Kromi(int cantidadOcupantes, String fechaIngreso, String p1, String p2, String p3,  int estado, int anioFabricacion, String marca, String danio) {
+		super(cantidadOcupantes, fechaIngreso, 3, danio);
 		this.anioFabricacion = anioFabricacion;
 		this.marca = marca;
 		this.p1 = p1;
@@ -23,7 +20,6 @@ public class Kromi extends Carro {
 		this.p3 = p3;
 	}
 
-	
 	public String getP1() {
 		return p1;
 	}
@@ -66,12 +62,9 @@ public class Kromi extends Carro {
 
 	@Override
 	public String toString() {
-		return "Kromi [Fab.=" + anioFabricacion + ",Marca=" + marca + ", Ubicación " + p1 + ", " + p2 + ", "
-				+ p3 + ", Ocupantes=" + cantidadOcupantes + ", Ingreso=" + fechaIngreso + ", estado="
-				+ estado + "]";
-	
-	
-	
+		return "Kromi [Fab: " + anioFabricacion + ", Marca: " + marca + ", Pos : "+ p1 + ", " + p2 + ", "
+				+ p3 + ", Ocupantes: " + cantidadOcupantes + ", Ingreso :" + fechaIngreso + ", Estado: "
+				+ danio + "]";
 	}
 
 		

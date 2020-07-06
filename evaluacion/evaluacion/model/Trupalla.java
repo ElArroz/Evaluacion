@@ -2,7 +2,6 @@ package model;
 
 public class Trupalla extends Carro {
 	
-	//protected static final int ESTADO = 1;
 	
 	int nivelArmadura;
 	String nombreManipulador;
@@ -12,8 +11,8 @@ public class Trupalla extends Carro {
 	public Trupalla() {
 	}
 
-	public Trupalla(int cantidadOcupantes, String fechaIngreso, int estado, int nivelArmadura, String nombreManipulador, String p1) {
-		super(cantidadOcupantes, fechaIngreso, 1);
+	public Trupalla(int cantidadOcupantes, String fechaIngreso, int estado, int nivelArmadura, String nombreManipulador, String p1, String danio) {
+		super(cantidadOcupantes, fechaIngreso, 1, danio);
 		this.nivelArmadura = nivelArmadura;
 		this.nombreManipulador = nombreManipulador;
 		this.p1 = p1;
@@ -46,7 +45,9 @@ public class Trupalla extends Carro {
 
 	@Override
 	public String toString() {
-		return "Trupalla [nivelArmadura=" + nivelArmadura + ", nombreManipulador=" + nombreManipulador + "]";
+		return "Trupalla [Armadura: " + nivelArmadura + ", Chofer=" + nombreManipulador + ", Ubicación: " + p1
+				+ ", Ocupantes: " + cantidadOcupantes + ", Ingreso: " + fechaIngreso + ", Estado: " + danio
+				+ "]";
 	}
 
 }
