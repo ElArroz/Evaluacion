@@ -124,7 +124,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 			puntos +=pto;
 			String coorde=convertirPos(x,y);
 			matrixJuego[x][y]=hit;	
-			System.out.println("Resultado["+hit+"] en Cordenadas: " + coorde + " Puntos+"+pto);
+			System.out.println("Resultado["+hit+"] en Cordenadas: " + coorde + " Puntos: +"+pto);
 		return hit;
 	}
 	

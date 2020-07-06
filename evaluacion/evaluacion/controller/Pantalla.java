@@ -66,6 +66,7 @@ public class Pantalla extends JFrame {
 	private JButton btnSalir;
 	private JButton btnJugar;
 	private JLabel imgFondo;
+	private JLabel txtTitulo;
 
 	public static void main(String[] args) {
 
@@ -156,8 +157,24 @@ public class Pantalla extends JFrame {
 
 		scrollPane.setViewportView(tableroJuego);
 		ventana.setLayout(null);
+		
+		txtTitulo = new JLabel("PUNTAJE ");
+		txtTitulo.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTitulo.setFont(new Font("Tahoma", Font.BOLD, 13));
+		txtTitulo.setVisible(false);
+		txtTitulo.setForeground(Color.ORANGE);
+		txtTitulo.setBounds(242, 299, 67, 20);
+		ventana.add(txtTitulo);
+		
+		JLabel txtLabel = new JLabel("0");
+		txtLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		txtLabel.setVisible(false);
+		txtLabel.setFont(new Font("Stencil", Font.PLAIN, 26));
+		txtLabel.setForeground(Color.ORANGE);
+		txtLabel.setBounds(252, 317, 36, 32);
+		ventana.add(txtLabel);
 		ventana.add(scrollPane);
-
+		
 		imgFondo = new JLabel("");
 		imgFondo.setIcon(new ImageIcon(Pantalla.class.getResource("/img/Huevo2.png")));
 		imgFondo.setBounds(16, 299, 165, 111);
@@ -174,6 +191,8 @@ public class Pantalla extends JFrame {
 				eje.generarMatrix();	
 				eje.desplegarCarros();
 				mostrarMatrizLocal();
+				btnJugar.setVisible(true);
+				
 			}
 		});
 
@@ -181,6 +200,7 @@ public class Pantalla extends JFrame {
 		btnJugar = new JButton("JUGAR");
 		btnJugar.setBounds(16, 360, 165, 50);
 		btnJugar.setFont(new Font("Tahoma", Font.BOLD, 18));
+		btnJugar.setVisible(false);
 		ventana.add(btnJugar);
 		btnJugar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -191,13 +211,15 @@ public class Pantalla extends JFrame {
 				btnDesplegar.setVisible(false);
 				btnJugar.setVisible(false);
 				imgFondo.setVisible(true);
+				txtLabel.setVisible(true);
+				txtTitulo.setVisible(true);
 
 			}
 		});
 
 //Boton MostrarTablero
-		btnMostrarTablero = new JButton("Mostrar Tablero");
-		btnMostrarTablero.setBounds(192, 299, 165, 50);
+		btnMostrarTablero = new JButton("Mostrar");
+		btnMostrarTablero.setBounds(367, 299, 73, 50);
 		btnMostrarTablero.setVisible(false);
 		ventana.add(btnMostrarTablero);
 		btnMostrarTablero.addActionListener(new ActionListener() {
@@ -214,41 +236,50 @@ public class Pantalla extends JFrame {
 		btnDisparar.setVisible(false);
 		ventana.add(btnDisparar);
 		this.huevos=new ArrayList<>();
+		
+		
 		btnDisparar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-
+				String coorde="";
+				int x=0,y=0;
 				int option = JOptionPane.showConfirmDialog(null, "¿Disparo aleatorio?", "LANZAR HUEVO",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (option == JOptionPane.YES_OPTION) {
 					
 					int cord[] = eje.generarCoordenadas("H");
-					int x = cord[0];
-					int y = cord[1];
+					x = cord[0];
+					y = cord[1];
 				
 					local[x][y]=eje.lanzarHuevo(x,y);
 					
-				String coorde=eje.convertirPos(x, y);
+				coorde=eje.convertirPos(x, y);
 					
-					Huevo huevo=new Huevo(); // Generer Instancia de huevo
-					huevo.setCoordenada(coorde);
-					huevo.setFila(x);
-					huevo.setColumna(y);
-					huevo.setPuntaje(eje.getPto());
-					huevos.add(huevo);	 // se agrega a la lista
-																	
+																					
 				} else {
 					String cord = JOptionPane.showInputDialog("Ingresa coordenada (Ejemplo: A1)");
 					// enviar a verificar
 					System.out.println("Se ingresa coordenadas " + cord + " y se llama auxilia lanza huevo");
 
 				}
+			
+				Huevo huevo=new Huevo(); // Generer Instancia de huevo
+				huevo.setCoordenada(coorde);
+				huevo.setFila(x);
+				huevo.setColumna(y);
+				huevo.setPuntaje(eje.getPto());
+				huevos.add(huevo);	 // se agrega a la lista
+				puntos=puntos+eje.getPto();   //REVISAR!!!!
+				String puntaje=String.valueOf(puntos);
+				txtLabel.setText(puntaje);
+				mostrarMatrizLocal();
+			
 			}
 		});
 
 //Boton FinPartida
-		btnFinPartida = new JButton("Finalizar partida");
-		btnFinPartida.setBounds(367, 299, 165, 50);
+		btnFinPartida = new JButton("Finalizar");
+		btnFinPartida.setBounds(459, 299, 73, 50);
 		btnFinPartida.setVisible(false);
 		ventana.add(btnFinPartida);
 		btnFinPartida.addActionListener(new ActionListener() {
