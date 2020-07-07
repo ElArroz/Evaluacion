@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.JTable;
@@ -136,19 +137,24 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	}
 
 	@Override
-	public String verificarCoordenadas(String tiro) {
+	public int[] verificarCoordenadas(String tiro) {
 	
-		if (tiro.matches(".*[a-zA-Z].*")) 
-		
-	 {
-			System.out.println("Debe ingresar una coordenada valida!");
-			
+	int number=0;
+	String laLetra = tiro.substring(0,1); 
+	String elNumero = tiro.substring(1,tiro.length());
+	int a=0,b=0,c=0;
+				
+		if ((elNumero.replaceAll("[1234567890]","")).length() ==0) {
+			number=Integer.valueOf(elNumero);		
 		}
 		
+		if ((number>0) && (number<16) && (tiro.matches(".*[a-zA-Z].*"))) {
+			char caracter =  laLetra.toUpperCase().charAt(0);
+			a=number-1; b=caracter-64; c=1;
+		}
+	
 		
-		
-		
-		return null;
+		return new int[] {a,b,c};
 	}
 	
 	@Override
@@ -187,7 +193,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 						Caguano caguano=new Caguano(); 	// Generer Instancia de Caguano
 							caguano.setAlcanceTiro(ThreadLocalRandom.current().nextInt(2, 30));
 							caguano.setColorConfeti(aux.RandomColor());
-							caguano.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(2, 4));
+							caguano.setCantidadOcupantes(ThreadLocalRandom.current().nextInt(2, 6));
 							caguano.setFechaIngreso(aux.RandomFecha()+aux.RandomFabricacion());
 							caguano.setDanio("SinDaño");
 							caguano.setP1(convertirPos(x,y));

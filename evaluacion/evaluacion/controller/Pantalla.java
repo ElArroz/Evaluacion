@@ -49,16 +49,16 @@ public class Pantalla extends JFrame {
 	public static JTable tableroJuego;
 	int tam = 15;
 	int puntos = 0;
-	String pos,wn;
-	
+	String pos, wn;
+
 	static Ejecutor eje = new Ejecutor();
-		
+
 	String matrixJuego[][] = eje.getMatrixJuego();
-	String local[][] = new String[tam+1][tam+1];
-	
+	String local[][] = new String[tam + 1][tam + 1];
+
 	Huevo huevo = new Huevo();
-	private List <Huevo> huevos;
-	
+	private List<Huevo> huevos;
+
 	private JButton btnDesplegar;
 	private JButton btnMostrarTablero;
 	private JButton btnDisparar;
@@ -84,7 +84,7 @@ public class Pantalla extends JFrame {
 
 	}
 
-	public void mostrarMatrizLocal() { 
+	public void mostrarMatrizLocal() {
 
 		DefaultTableModel model = (DefaultTableModel) tableroJuego.getModel();
 		model.setRowCount(tam);
@@ -92,7 +92,7 @@ public class Pantalla extends JFrame {
 		for (int i = 0; i < tam; i++) {
 			tableroJuego.setValueAt(i + 1, i, 0); // Encabezados filas 1 a 15
 		}
-				
+
 		for (int i = 0; i < tam; i++) {
 			for (int j = 1; j < tam + 1; j++) {
 				tableroJuego.setValueAt(local[i][j], i, j);
@@ -141,14 +141,14 @@ public class Pantalla extends JFrame {
 			tableroJuego.setValueAt(i + 1, i, 0); // Encabezados filas 1 a 15
 		}
 
-		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();  //aca puedo pintar!
+		DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer(); // aca puedo pintar!
 		centerRenderer.setHorizontalAlignment(JLabel.CENTER);
 
 		for (int i = 0; i < 16; i++) {
 			tableroJuego.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
 			tableroJuego.getColumnModel().getColumn(i).setResizable(false);
 		}
-		
+
 		for (int i = 0; i < tam + 1; i++) {
 			for (int j = 0; j < tam + 1; j++) {
 				local[i][j] = "·";
@@ -157,7 +157,7 @@ public class Pantalla extends JFrame {
 
 		scrollPane.setViewportView(tableroJuego);
 		ventana.setLayout(null);
-		
+
 		txtTitulo = new JLabel("PUNTAJE ");
 		txtTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTitulo.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -165,7 +165,7 @@ public class Pantalla extends JFrame {
 		txtTitulo.setForeground(Color.ORANGE);
 		txtTitulo.setBounds(242, 299, 67, 20);
 		ventana.add(txtTitulo);
-		
+
 		JLabel txtLabel = new JLabel("0");
 		txtLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		txtLabel.setVisible(false);
@@ -174,7 +174,7 @@ public class Pantalla extends JFrame {
 		txtLabel.setBounds(252, 317, 36, 32);
 		ventana.add(txtLabel);
 		ventana.add(scrollPane);
-		
+
 		imgFondo = new JLabel("");
 		imgFondo.setIcon(new ImageIcon(Pantalla.class.getResource("/img/Huevo2.png")));
 		imgFondo.setBounds(16, 299, 165, 111);
@@ -188,11 +188,11 @@ public class Pantalla extends JFrame {
 		btnDesplegar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tableroJuego.setVisible(true);
-				eje.generarMatrix();	
+				eje.generarMatrix();
 				eje.desplegarCarros();
 				mostrarMatrizLocal();
 				btnJugar.setVisible(true);
-				
+
 			}
 		});
 
@@ -225,7 +225,7 @@ public class Pantalla extends JFrame {
 		ventana.add(btnMostrarTablero);
 		btnMostrarTablero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				mostrarMatrizLocal();
 			}
 		});
@@ -236,50 +236,55 @@ public class Pantalla extends JFrame {
 		btnDisparar.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnDisparar.setVisible(false);
 		ventana.add(btnDisparar);
-		this.huevos=new ArrayList<>();
-		
-		
+		this.huevos = new ArrayList<>();
+
 		btnDisparar.addActionListener(new ActionListener() {
-			
+
 			public void actionPerformed(ActionEvent e) {
-				String coorde="";
-				int x=0,y=0;
+				String coorde = "";
+				int x = 0, y = 0, z = 0;
 				int option = JOptionPane.showConfirmDialog(null, "¿Disparo aleatorio?", "LANZAR HUEVO",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (option == JOptionPane.YES_OPTION) {
-					
+
 					int cord[] = eje.generarCoordenadas("H");
 					x = cord[0];
 					y = cord[1];
-				
-					local[x][y]=eje.lanzarHuevo(x,y);
-					coorde=eje.convertirPos(x, y);
-					
-																					
+					z = 1;
+
+					local[x][y] = eje.lanzarHuevo(x, y);
+					coorde = eje.convertirPos(x, y);
+
 				} else {
 					String cord = JOptionPane.showInputDialog("Ingresa coordenada (Ejemplo: A1)");
-					
-					
-					
-					
-					System.out.println("Se ingresa coordenadas " + cord + " y se llama auxilia lanza huevo");
+
+					int[] posi = eje.verificarCoordenadas(cord);
+
+					if (posi[2] == 1) {
+						x = posi[0];
+						y = posi[1];
+						z = 1;
+						local[x][y] = eje.lanzarHuevo(x, y);
+					}
 
 				}
-			
-				Huevo huevo=new Huevo(); // Generer Instancia de huevo
-				huevo.setCoordenada(coorde);
-				huevo.setFila(x);
-				huevo.setColumna(y);
-				huevo.setPuntaje(eje.getPto());
-				huevos.add(huevo);	 // se agrega a la lista
-				puntos=puntos+eje.getPto();   //REVISAR!!!!
-				String puntaje=String.valueOf(puntos);
-				txtLabel.setText(puntaje);
-				mostrarMatrizLocal();
-				
-				// recorre en busca de los puntos!!!
-				
-			
+
+				if (z == 1) {
+					Huevo huevo = new Huevo(); // Generer Instancia de huevo
+					huevo.setCoordenada(coorde);
+					huevo.setFila(x);
+					huevo.setColumna(y);
+					huevo.setPuntaje(eje.getPto());
+					huevos.add(huevo); // se agrega a la lista
+					puntos = puntos + eje.getPto(); // REVISAR!!!!
+					String puntaje = String.valueOf(puntos);
+					txtLabel.setText(puntaje);
+					mostrarMatrizLocal();
+					// recorre en busca de los puntos!!!
+				} else {
+					System.out.println("Coordenadas INCORRECTAS");
+				}
+
 			}
 		});
 
@@ -291,29 +296,28 @@ public class Pantalla extends JFrame {
 		ventana.add(btnFinPartida);
 		btnFinPartida.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			
-				int option = JOptionPane.showConfirmDialog(null, "Vas a finalizar la partida: ¿Estas seguro?", "FINALIZAR PARTIDA",
-						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+				int option = JOptionPane.showConfirmDialog(null, "Vas a finalizar la partida: ¿Estas seguro?",
+						"FINALIZAR PARTIDA", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (option == JOptionPane.YES_OPTION) {
-				 					
-				for (int i = 0; i < tam; i++) {
-					for (int j = 1; j < tam + 1; j++) {
-						tableroJuego.setValueAt(eje.getMatrixJuego()[i][j], i, j);
+
+					for (int i = 0; i < tam; i++) {
+						for (int j = 1; j < tam + 1; j++) {
+							tableroJuego.setValueAt(eje.getMatrixJuego()[i][j], i, j);
+						}
 					}
-				}
-				eje.getCarros().forEach(carro -> System.out.println( "    " + carro));
-				huevos.forEach(huevo -> System.out.println( "    " + huevo));
-				
-				Main main = new Main();
-				main.setVisible(true);
-				main.setSize(560,450);
-				setLocationRelativeTo(null);
-				ventana.setVisible(false);
-				dispose();
-	
-			
-				}else {
-					
+					eje.getCarros().forEach(carro -> System.out.println("    " + carro));
+					huevos.forEach(huevo -> System.out.println("    " + huevo));
+
+					Main main = new Main();
+					main.setVisible(true);
+					main.setSize(560, 450);
+					setLocationRelativeTo(null);
+					ventana.setVisible(false);
+					dispose();
+
+				} else {
+
 				}
 			}
 		});
@@ -326,7 +330,6 @@ public class Pantalla extends JFrame {
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				
 				// Se pide una confirmación antes de finalizar el programa
 				int option = JOptionPane.showConfirmDialog(null, "¿Estás seguro de que quieres cerrar la aplicación?",
 						"Confirmación de cierre", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
