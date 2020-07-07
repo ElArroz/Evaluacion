@@ -253,13 +253,15 @@ public class Pantalla extends JFrame {
 					y = cord[1];
 				
 					local[x][y]=eje.lanzarHuevo(x,y);
-					
 					coorde=eje.convertirPos(x, y);
 					
 																					
 				} else {
 					String cord = JOptionPane.showInputDialog("Ingresa coordenada (Ejemplo: A1)");
-					// enviar a verificar
+					
+					
+					
+					
 					System.out.println("Se ingresa coordenadas " + cord + " y se llama auxilia lanza huevo");
 
 				}
@@ -274,6 +276,9 @@ public class Pantalla extends JFrame {
 				String puntaje=String.valueOf(puntos);
 				txtLabel.setText(puntaje);
 				mostrarMatrizLocal();
+				
+				// recorre en busca de los puntos!!!
+				
 			
 			}
 		});

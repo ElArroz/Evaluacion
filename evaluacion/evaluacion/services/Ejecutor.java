@@ -131,37 +131,23 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 	
 	@Override
 	public int calcularPuntaje(int x, int y) {
-
-		// Auxiliares aux = new Auxiliares(); aux.desplegarCarros().length
-
-		/*
-		 * int estado = 0; //Carro.estado = 0; switch (matrixJuego[x][y]) { case 'K':
-		 * punto += 3; setTablero(x, y, 'H'); // cambiar K por H for (int i = 0; i <
-		 * matrixJuego[x][y]; i++) {// recorrer las instancias de carro - KROMI buscando
-		 * x,y en el // arreglo de ubicaciones y luego Restar a estado -1 if ( estado ==
-		 * 0) {// if estado es = 0 se suma +10 a punto punto += 10;
-		 * 
-		 * } }
-		 * 
-		 * break; case 'C': punto += 2; setTablero(x, y, 'H'); // cambiar C por H for
-		 * (int i = 0; i < matrixJuego[x][y]; i++) {// recorrer las instancias de carro
-		 * - Caguano buscando x,y en // el // arreglo de ubicaciones y luego Restar a
-		 * estado -1 if (estado == 0) {// if estado es = 0 se suma +10 a punto punto +=
-		 * 10;
-		 * 
-		 * } } break; case 'T': punto += 1; setTablero(x, y, 'H'); // cambiar T por H
-		 * for (int i = 0; i < matrixJuego[x][y]; i++) {// recorrer las instancias de
-		 * carro - Trupalla buscando x,y en // el // arreglo de ubicaciones y luego
-		 * Restar a estado -1 if (estado == 0) {// if estado es = 0 se suma +10 a punto
-		 * punto += 10;
-		 * 
-		 * } } break; }
-		 */
+		
 		return puntos;
 	}
 
 	@Override
 	public String verificarCoordenadas(String tiro) {
+	
+		if (tiro.matches(".*[a-zA-Z].*")) 
+		
+	 {
+			System.out.println("Debe ingresar una coordenada valida!");
+			
+		}
+		
+		
+		
+		
 		return null;
 	}
 	
@@ -205,7 +191,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 							caguano.setFechaIngreso(aux.RandomFecha()+aux.RandomFabricacion());
 							caguano.setDanio("SinDaño");
 							caguano.setP1(convertirPos(x,y));
-							caguano.setP1(convertirPos(x,y+1));
+							caguano.setP2(convertirPos(x,y+1));
 						this.carros.add(caguano);		// agrego al arreglo de carros 
 						out = out+1;
 				}
