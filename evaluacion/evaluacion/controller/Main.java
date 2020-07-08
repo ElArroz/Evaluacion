@@ -8,7 +8,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +16,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+@SuppressWarnings("serial")
 public class Main extends JFrame {
 
 	private JPanel inicio;
@@ -33,8 +33,6 @@ public class Main extends JFrame {
 			}
 		});
 	}
-
-
 	
 	public Main() {
 		setTitle("[ Batalla por Oscurilandia ]");
@@ -68,9 +66,7 @@ public class Main extends JFrame {
 			}
 		});
 		btnIniciarJuego.setFont(new Font("Stencil", Font.BOLD, 20));
-
-		
-		
+	
 		GroupLayout gl_inicio = new GroupLayout(inicio);
 		gl_inicio.setHorizontalGroup(
 			gl_inicio.createParallelGroup(Alignment.LEADING)

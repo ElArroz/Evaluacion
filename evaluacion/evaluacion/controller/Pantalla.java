@@ -1,64 +1,41 @@
 package controller;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.GridLayout;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-
 import model.Huevo;
-import model.Kromi;
 import services.Ejecutor;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.ListSelectionModel;
-import javax.swing.border.BevelBorder;
 import java.awt.Font;
-import javax.swing.JTree;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JToolBar;
-import java.awt.Cursor;
-import javax.swing.JLayeredPane;
 import javax.swing.ImageIcon;
 
+@SuppressWarnings("serial")
 public class Pantalla extends JFrame {
 
 	private JPanel ventana;
 	public static JTable tableroJuego;
 	int tam = 15;
 	int puntos = 0;
-	String pos, wn;
-
+	String pos = "";
 	static Ejecutor eje = new Ejecutor();
-
 	String matrixJuego[][] = eje.getMatrixJuego();
 	String local[][] = new String[tam + 1][tam + 1];
-
 	Huevo huevo = new Huevo();
 	private List<Huevo> huevos;
-
 	private JButton btnDesplegar;
 	private JButton btnMostrarTablero;
 	private JButton btnDisparar;
@@ -217,7 +194,7 @@ public class Pantalla extends JFrame {
 			}
 		});
 
-//Boton MostrarTablero
+//Boton Mostrar Estadisticas
 		btnMostrarTablero = new JButton("Mostrar");
 		btnMostrarTablero.setFont(new Font("Arial Narrow", Font.PLAIN, 12));
 		btnMostrarTablero.setBounds(367, 299, 73, 50);
@@ -225,8 +202,7 @@ public class Pantalla extends JFrame {
 		ventana.add(btnMostrarTablero);
 		btnMostrarTablero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				mostrarMatrizLocal();
+				
 			}
 		});
 
@@ -241,48 +217,49 @@ public class Pantalla extends JFrame {
 		btnDisparar.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				String coorde = "";
+
 				int x = 0, y = 0, z = 0;
 				int option = JOptionPane.showConfirmDialog(null, "¿Disparo aleatorio?", "LANZAR HUEVO",
 						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (option == JOptionPane.YES_OPTION) {
 
-					int cord[] = eje.generarCoordenadas("H");
-					x = cord[0];
-					y = cord[1];
+					int posi[] = eje.generarCoordenadas("H");
+					x = posi[0];
+					y = posi[1];
 					z = 1;
 
 					local[x][y] = eje.lanzarHuevo(x, y);
-					coorde = eje.convertirPos(x, y);
+					pos = eje.convertirPos(x, y);
 
 				} else {
-					String cord = JOptionPane.showInputDialog("Ingresa coordenada (Ejemplo: A1)");
+					String cordenada = JOptionPane.showInputDialog("Ingresa coordenada (Ejemplo: A1)");
 
-					int[] posi = eje.verificarCoordenadas(cord);
+					int[] posi = eje.verificarCoordenadas(cordenada);
 
 					if (posi[2] == 1) {
 						x = posi[0];
 						y = posi[1];
 						z = 1;
 						local[x][y] = eje.lanzarHuevo(x, y);
+						pos = cordenada.toUpperCase();
 					}
 
 				}
 
 				if (z == 1) {
-					Huevo huevo = new Huevo(); // Generer Instancia de huevo
-					huevo.setCoordenada(coorde);
+					Huevo huevo = new Huevo(); 
+					huevo.setCoordenada(pos);
 					huevo.setFila(x);
 					huevo.setColumna(y);
 					huevo.setPuntaje(eje.getPto());
-					huevos.add(huevo); // se agrega a la lista
-					puntos = puntos + eje.getPto(); // REVISAR!!!!
+					huevos.add(huevo); 
+					puntos = puntos + eje.getPto(); 
 					String puntaje = String.valueOf(puntos);
 					txtLabel.setText(puntaje);
 					mostrarMatrizLocal();
-					// recorre en busca de los puntos!!!
+
 				} else {
-					System.out.println("Coordenadas INCORRECTAS");
+					System.out.println("Cordenadas INCORRECTAS");
 				}
 
 			}
@@ -306,14 +283,18 @@ public class Pantalla extends JFrame {
 							tableroJuego.setValueAt(eje.getMatrixJuego()[i][j], i, j);
 						}
 					}
+
 					eje.getCarros().forEach(carro -> System.out.println("    " + carro));
 					huevos.forEach(huevo -> System.out.println("    " + huevo));
-
+					
+					JOptionPane.showMessageDialog(null, "Reiniciando");
+					
 					Main main = new Main();
 					main.setVisible(true);
 					main.setSize(560, 450);
 					setLocationRelativeTo(null);
 					ventana.setVisible(false);
+					
 					dispose();
 
 				} else {

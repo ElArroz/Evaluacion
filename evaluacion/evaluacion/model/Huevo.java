@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Huevo {
 
 	String coordenada;
@@ -9,7 +7,6 @@ public class Huevo {
 	int columna;
 	int puntaje;
 	
-
 	public Huevo() {
 	}
 

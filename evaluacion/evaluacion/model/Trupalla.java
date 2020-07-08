@@ -1,31 +1,25 @@
 package model;
 
+import java.util.List;
+
 public class Trupalla extends Carro {
 	
 	
 	int nivelArmadura;
 	String nombreManipulador;
-	String p1;
+
 		
 	
 	public Trupalla() {
 	}
 
-	public Trupalla(int cantidadOcupantes, String fechaIngreso, int estado, int nivelArmadura, String nombreManipulador, String p1, String danio) {
-		super(cantidadOcupantes, fechaIngreso, 1, "SinDaño");
+	public Trupalla(int cantidadOcupantes, String fechaIngreso, int estado, int nivelArmadura, String nombreManipulador, String p1, String danio, List<String> posiciones) {
+		super(cantidadOcupantes, fechaIngreso, posiciones, estado, "SinDaño");
 		this.nivelArmadura = nivelArmadura;
 		this.nombreManipulador = nombreManipulador;
-		this.p1 = p1;
+		
 	}
 	
-
-	public String getP1() {
-		return p1;
-	}
-
-	public void setP1(String p1) {
-		this.p1 = p1;
-	}
 
 	public int getNivelArmadura() {
 		return nivelArmadura;
@@ -45,9 +39,9 @@ public class Trupalla extends Carro {
 
 	@Override
 	public String toString() {
-		return "Trupalla [Armadura: " + nivelArmadura + " Chofer: " + nombreManipulador + " Pos: " + p1
-				+ " Ocupantes: " + cantidadOcupantes + " Ingreso: " + fechaIngreso + " Estado: " + danio
-				+ "]";
+		return "Trupalla [Armadura: " + nivelArmadura + " Chofer: " + nombreManipulador 
+				+ " Ocupantes: " + cantidadOcupantes + " Ingreso: " + fechaIngreso + 
+				" Posicion: "+ posiciones +" Estado: " + danio + "]";
 	}
 
 }
