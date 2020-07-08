@@ -95,7 +95,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 		case "K":
 			hit = "(K)";
 			pto = 3;
-			bit = sumarBonus(cordenada);
+			bit = destruiCarro(cordenada);
 			if (bit) {
 				pto = 13;
 				avisar("Kromi destruida! \n 3 ptos y bonus de 10 ptos");
@@ -108,7 +108,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 		case "C":
 			hit = "(C)";
 			pto = 2;
-			bit = sumarBonus(cordenada);
+			bit = destruiCarro(cordenada);
 			if (bit) {
 				pto = 7;
 				avisar("Cahuano destruida! \n 2 ptos y bonus de 5 ptos");
@@ -122,7 +122,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 			hit = "(T)";
 			pto = 1;
 			avisar("Trupalla destruida! +" + pto);
-			sumarBonus(cordenada);
+			destruiCarro(cordenada);
 			matrixJuego[x][y] = hit;
 			break;
 
@@ -275,7 +275,7 @@ public class Ejecutor extends DefaultTableCellRenderer implements Tablero {
 		return pto;
 	}
 
-	public boolean sumarBonus(String impacto) {
+	public boolean destruiCarro(String impacto) {
 		boolean bonus = false;
 		List<Carro> carros = getCarros();
 		for (Carro i : carros) {

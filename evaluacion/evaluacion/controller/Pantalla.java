@@ -13,6 +13,8 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+
+import model.Carro;
 import model.Huevo;
 import services.Ejecutor;
 import java.awt.event.ActionListener;
@@ -30,7 +32,7 @@ public class Pantalla extends JFrame {
 	public static JTable tableroJuego;
 	int tam = 15;
 	int puntos = 0;
-	String pos = "";
+	String msj="", pos ="";
 	static Ejecutor eje = new Ejecutor();
 	String matrixJuego[][] = eje.getMatrixJuego();
 	String local[][] = new String[tam + 1][tam + 1];
@@ -79,7 +81,7 @@ public class Pantalla extends JFrame {
 
 	public Pantalla() {
 
-		setTitle("[ Batalla por Oscurilandia: A la conquista de la camara secreta ]");
+		setTitle("[A la conquista de la camara secreta ]");
 		// setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(556, 449);
@@ -100,7 +102,6 @@ public class Pantalla extends JFrame {
 		tableroJuego.setBorder(null);
 		tableroJuego.getTableHeader().setReorderingAllowed(false);
 		tableroJuego.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
 		tableroJuego.setModel(new DefaultTableModel(new Object[][] {},
 				new String[] { " ", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O" }) {
 			boolean[] columnEditables = new boolean[] { false, false, false, false, false, false, false, false, false,
@@ -203,7 +204,31 @@ public class Pantalla extends JFrame {
 		btnMostrarTablero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-			}
+				//array nn = eje.
+				
+				for(Carro i : eje.getCarros()) { //sacar las posiciones
+					if (i.equals(i.posiciones)) {
+						msj+="xxx";
+					}else {
+						msj+=i+"\n";
+					}
+				}
+				
+				//replaceAll("[1234567890]", "")
+				
+				eje.avisar(msj);
+					
+					
+					msj="";
+				
+				for(Huevo j : huevos) {
+					msj+=""+j+"\n";
+					eje.avisar(msj);
+					msj="";
+				}
+			
+		}
+			
 		});
 
 //Boton Disparar
@@ -287,7 +312,7 @@ public class Pantalla extends JFrame {
 					eje.getCarros().forEach(carro -> System.out.println("    " + carro));
 					huevos.forEach(huevo -> System.out.println("    " + huevo));
 					
-					JOptionPane.showMessageDialog(null, "Reiniciando");
+					eje.avisar("Reiniciando");
 					
 					Main main = new Main();
 					main.setVisible(true);
